@@ -1,3 +1,5 @@
+
+package anki;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,13 +19,6 @@ public class Decks {
 
     }
 
- /**
- * Metodi lisää annetun kortin pakkaan.
- *
- * @param   syote   Käyttäjän antama syöte
- * 
- * @return todennäköisyys kalibroituna
- */
     public void add(Cards card) {
         deck.add(card);
         ++count;
@@ -56,3 +51,4 @@ public class Decks {
 //        return ""+deck.toString();
 //    }
 }
+

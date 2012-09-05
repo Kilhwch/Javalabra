@@ -1,17 +1,7 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author Kasper
- */
+package anki;
 public class Main {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         Cards card1 = new Cards("kakka", "shit");
         Cards card2 = new Cards("vittu", "fuck");
@@ -42,3 +32,4 @@ public class Main {
 
     }
 }
+
