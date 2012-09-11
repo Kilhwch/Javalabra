@@ -9,5 +9,22 @@ package anki;
  * @author Kasper
  */
 public class Player {
-    // test
+    private String name;
+    private String ID;
+
+    public Player() {
+        
+    }
+    
+    public String getName() {
+        return this.name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    public String getID() {
+        return this.ID;
+    }
 }

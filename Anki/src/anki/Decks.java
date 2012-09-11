@@ -1,29 +1,44 @@
-
 package anki;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/*****************************************/
-/*Author: Kasper*************************/
-/*Anki/Decks****************************/
-/*Date: 18/08/2012*********************/
-/*************************************/
 public class Decks {
 
-    private HashMap<String, String> list;
+    private HashMap<String, ArrayList<Cards>> deckList = new HashMap<String, ArrayList<Cards>>();
     private ArrayList<Cards> deck;
-    private int count;
+    private String deckName;
+    private int count = 0;
+    //    private HashMap<String, String> list; // väliaikanen lista korteille
 
     public Decks() {
         deck = new ArrayList<Cards>();
 
     }
+    
+    public Decks(String name) {
+        this.deckName = name;
+    }
 
+    public void setDeckName(String deckName) {
+        this.deckName = deckName;
+
+    }
+
+    public String getDeckName() {
+        return this.deckName;
+    }
+
+    
+    public void addDecktoDeckList() {
+        deckList.put(deckName, this.deck);
+    }
+    
     public void add(Cards card) {
         deck.add(card);
         ++count;
     }
-
+    
     public void delete(Cards card) {
         deck.remove(card);
         --count;
@@ -32,23 +47,66 @@ public class Decks {
     public int getCount() {
         return this.count;
     }
-    
 
-    public HashMap<String, String> returnAllWords() {
-        list = new HashMap<String, String>();
-        
-        for (int i = 0; i < deck.size(); i++) {
-            String temporaryWord = deck.get(i).getWord();
-            String temporaryTranslation = deck.get(i).getTranslation();
-            
-            list.put(temporaryWord, temporaryTranslation);
+    public String getNextWord(int index) {
+        return deck.get(index).getWord();
+
+    }
+
+    public String getNextTranslation(int index) {
+        return deck.get(index).getTranslation();
+    }
+
+    public boolean allWordsReviewed(int index) {
+        if (index == this.count) {
+            return true;
+        } else {
+            return false;
         }
-        return list;
     }
     
-//    @Override
-//    public String toString() {
-//        return ""+deck.toString();
-//    }
+    
+    /**********************************************************************/
+    /*deckExist antaa openADeckByName:lle käskyn palauttaa lista jos löytyy/
+    /**********************************************************************/
+    public boolean deckExists(String name) {
+        for (int i = 0; i < deckList.size(); i++) {
+            if (deckList.containsKey(name)) {
+                openADeckByName(name);
+                return true;
+            }
+        }
+        return false;
+    }                                                            
+                                                                
+    public ArrayList<Cards> openADeckByName(String name) {       
+        return deckList.get(name); // PALAUTTAAKO OIKEAN LISTAN???                           
+    }                                                            
+    
+    /**********************************************************************/
+    /*deckExist antaa openADeckByName:lle käskyn palauttaa lista jos löytyy/
+    /**********************************************************************/
 }
 
+
+
+
+
+
+
+
+
+
+
+//    public HashMap<String, String> returnAllWords() {
+//        list = new HashMap<String, String>();
+//
+//        for (int i = 0; i < deck.size(); i++) {
+//            String temporaryWord = deck.get(i).getWord();
+//            String temporaryTranslation = deck.get(i).getTranslation();
+//
+//            list.put(temporaryWord, temporaryTranslation);
+//        }
+//        return list;
+//    }
+//}
