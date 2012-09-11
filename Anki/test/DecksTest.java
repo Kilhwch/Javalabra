@@ -52,6 +52,14 @@ public class DecksTest {
         assertEquals(0, deck.getCount(), vertailuTarkkuus);
     }
     
+    @Test
+    public void booleanTest() {
+        assertFalse(deck.allWordsReviewed(-1));
+        // Assert. //
+    
+    
+    }
+    
     
     
 

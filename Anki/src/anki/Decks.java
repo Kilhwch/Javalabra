@@ -57,7 +57,7 @@ public class Decks {
         return deck.get(index).getTranslation();
     }
 
-    public boolean allWordsReviewed(int index) {
+    public boolean allWordsReviewed(int index) { // test
         if (index == this.count) {
             return true;
         } else {
