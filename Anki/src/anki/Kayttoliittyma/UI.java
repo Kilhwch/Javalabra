@@ -496,13 +496,13 @@ public class UI extends javax.swing.JFrame {
 
     private void DrillEvaluateCorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateCorrectButtonActionPerformed
         stats.countToCorrectAnswers();
-        MUUTATÄÄNIMIVITTU(); // KATO TÄNNNNNNNNNNNEEEEEEEEEEEEEEEE
+        allCardsGonethroughCheck(); // KATO TÄNNNNNNNNNNNEEEEEEEEEEEEEEEE
     }//GEN-LAST:event_DrillEvaluateCorrectButtonActionPerformed
 
     private void DrillEvaluateIncorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateIncorrectButtonActionPerformed
         stats.countToIncorrectAnswers();
 
-        MUUTATÄÄNIMIVITTU(); // KATO TÄNNNNNNNNNNNEEEEEEEEEEEEEEEE
+        allCardsGonethroughCheck(); // KATO TÄNNNNNNNNNNNEEEEEEEEEEEEEEEE
     }//GEN-LAST:event_DrillEvaluateIncorrectButtonActionPerformed
 
     private void DrillShowAnswerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillShowAnswerButtonActionPerformed
@@ -626,7 +626,7 @@ public class UI extends javax.swing.JFrame {
     
     
     
-    private void MUUTATÄÄNIMIVITTU() {
+    private void allCardsGonethroughCheck() {
         if (deck.allWordsReviewed(wordIndex) == true) {
             StatsWindow.setLocationRelativeTo(this);
             DrillWindow.setVisible(false);

@@ -17,6 +17,7 @@ public class Decks {
     }
     
     public Decks(String name) {
+        deck = new ArrayList<Cards>();
         this.deckName = name;
     }
 

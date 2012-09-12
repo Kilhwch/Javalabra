@@ -5,6 +5,7 @@
 
 import anki.Cards;
 import anki.Decks;
+import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -24,8 +25,9 @@ public class DecksTest {
     
     @Before
     public void setUp() {
-        deck = new Decks();
-
+        deck = new Decks("pakka");
+        deck.addDecktoDeckList();
+        
     }
     
     
@@ -55,11 +57,27 @@ public class DecksTest {
     @Test
     public void booleanTest() {
         assertFalse(deck.allWordsReviewed(-1));
-        // Assert. //
-    
-    
+
     }
     
+    @Test
+    public void deckNamesCorrect() {
+        assertEquals("pakka", deck.getDeckName());
+    }
+    
+    @Test
+    public void deckIsInTheList() {
+        Assert.assertTrue(deck.deckExists("pakka"));
+    }
+
+    @Test
+    public void ReturnsGetNextWordCorrectly() {
+        Cards testCard1 = new Cards("Moi", "Hello");
+        Cards testCard2 = new Cards("Toka", "Second");
+        deck.add(testCard1);
+        deck.add(testCard2);
+        assertEquals("Toka", deck.getNextWord(1));
+    }
     
     
 
