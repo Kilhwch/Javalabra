@@ -12,18 +12,18 @@ package anki.Kayttoliittyma;
 
 import anki.Cards;
 import anki.Decks;
+import anki.HandleFiles;
 import anki.Stats;
-import java.awt.event.KeyEvent;
-import java.io.FileFilter;
-import javax.swing.JFileChooser;
+import java.io.File;
 import javax.swing.JFrame;
-import javax.swing.JMenuItem;
 
 public class UI extends javax.swing.JFrame {
 
+    private File file = new File();
+    private HandleFiles handler = new HandleFiles(file);
+    
     private Decks deck = new Decks();
     private Stats stats = new Stats();
-    private FileFilter filter;
     private int wordIndex = 0;
 
     /** Creates new form UI */
@@ -209,9 +209,9 @@ public class UI extends javax.swing.JFrame {
         DrillWindow.setMinimumSize(new java.awt.Dimension(350, 469));
         DrillWindow.setResizable(false);
 
-        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24));
 
-        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24));
 
         DrillEvaluateCorrectButton.setText("Correct");
         DrillEvaluateCorrectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -289,11 +289,11 @@ public class UI extends javax.swing.JFrame {
         StatsWindow.setMinimumSize(new java.awt.Dimension(250, 250));
         StatsWindow.setResizable(false);
 
-        StatsShowDeckName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        StatsShowDeckName.setFont(new java.awt.Font("Tahoma", 0, 18));
 
-        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14));
 
-        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -418,7 +418,7 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 382, Short.MAX_VALUE))
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(151, 151, 151)
                         .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -455,8 +455,9 @@ public class UI extends javax.swing.JFrame {
 
     private void NewDeckFieldOkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonMouseClicked
         deck.setDeckName(NewDeckNameField.getText());
-        AddDeckNameWindow.setVisible(false);
+        handler.createFile(NewDeckNameField.getText());
 
+        AddDeckNameWindow.setVisible(false);
         AddNewWordWindow.setLocationRelativeTo(this);
         AddNewWordWindow.setTitle("Create new cards - " + deck.getDeckName());
         AddNewWordWindow.setVisible(true);
@@ -473,6 +474,9 @@ public class UI extends javax.swing.JFrame {
     private void NewWordAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWordAddButtonActionPerformed
         Cards newCard = new Cards(NewWordField.getText(), NewTranslationField.getText());
         deck.add(newCard);
+        String temporary = NewWordField.getText() + ":" + NewTranslationField.getText() + ":";
+        handler.writeToFile(handler.getFileName(), temporary);
+
         NewWordField.setText("");
         NewTranslationField.setText("");
     }//GEN-LAST:event_NewWordAddButtonActionPerformed
@@ -496,13 +500,13 @@ public class UI extends javax.swing.JFrame {
 
     private void DrillEvaluateCorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateCorrectButtonActionPerformed
         stats.countToCorrectAnswers();
-        allCardsGonethroughCheck(); // KATO TÄNNNNNNNNNNNEEEEEEEEEEEEEEEE
+        allCardsGonethroughCheck();
     }//GEN-LAST:event_DrillEvaluateCorrectButtonActionPerformed
 
     private void DrillEvaluateIncorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateIncorrectButtonActionPerformed
         stats.countToIncorrectAnswers();
 
-        allCardsGonethroughCheck(); // KATO TÄNNNNNNNNNNNEEEEEEEEEEEEEEEE
+        allCardsGonethroughCheck();
     }//GEN-LAST:event_DrillEvaluateIncorrectButtonActionPerformed
 
     private void DrillShowAnswerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillShowAnswerButtonActionPerformed
@@ -522,12 +526,22 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_FileChooserActionPerformed
 
     private void UiOpenFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiOpenFileButtonActionPerformed
-        JFileChooser chooser = new JFileChooser();
-        int returnVal = chooser.showOpenDialog(null);
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            System.out.println("You chose to open this file: "
-                    + chooser.getSelectedFile().getName());
-        }
+//        do {
+//            JFileChooser chooser = new JFileChooser();
+//            FileNameExtensionFilter filter = new FileNameExtensionFilter("txt");
+//            chooser.setFileFilter(filter);
+//            int returnVal = chooser.showOpenDialog(null);
+//            try {
+//                if (returnVal == JFileChooser.APPROVE_OPTION) {
+////                    return new Scanner(chooser.getSelectedFile());
+////                } else {
+////                    return null;
+//                }
+//
+//            } catch (FileNotFoundException e) {
+//                JOptionPane.showMessageDialog(null, "Invalid file!", "error", JOptionPane.ERROR_MESSAGE);
+//            }
+//        } while (true);
     }//GEN-LAST:event_UiOpenFileButtonActionPerformed
 
     private void UiNewDeckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiNewDeckButtonActionPerformed
@@ -623,9 +637,6 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator3;
     // End of variables declaration//GEN-END:variables
 
-    
-    
-    
     private void allCardsGonethroughCheck() {
         if (deck.allWordsReviewed(wordIndex) == true) {
             StatsWindow.setLocationRelativeTo(this);
