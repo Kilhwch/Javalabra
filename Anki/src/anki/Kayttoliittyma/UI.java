@@ -19,9 +19,8 @@ import javax.swing.JFrame;
 
 public class UI extends javax.swing.JFrame {
 
-    private File file = new File();
-    private HandleFiles handler = new HandleFiles(file);
-    
+    private File file;
+    private HandleFiles handler = new HandleFiles(file, getName());
     private Decks deck = new Decks();
     private Stats stats = new Stats();
     private int wordIndex = 0;
@@ -475,7 +474,7 @@ public class UI extends javax.swing.JFrame {
         Cards newCard = new Cards(NewWordField.getText(), NewTranslationField.getText());
         deck.add(newCard);
         String temporary = NewWordField.getText() + ":" + NewTranslationField.getText() + ":";
-        handler.writeToFile(handler.getFileName(), temporary);
+//        handler.writeToFile(handler.getFileName(), temporary);
 
         NewWordField.setText("");
         NewTranslationField.setText("");
