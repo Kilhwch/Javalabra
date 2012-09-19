@@ -1,28 +1,12 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package anki;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.lang.String;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
-import java.util.logging.Handler;
 
-//    public void createFile(File newDeckFile) {
-//        throw new UnsupportedOperationException("Not yet implemented");
-//    }
-//    public void writeToFile(String text) {
-//        
-//    }
-/**
- *
- * @author Kasper
- */
 public class HandleFiles {
     
     private HashMap<String, File> fileList = new HashMap<String, File>();
@@ -33,19 +17,20 @@ public class HandleFiles {
     public HandleFiles(File fileName, String name) {
         this.file = fileName;
         this.fileName = name;
-
     }
 
     public HandleFiles() {
+    
     }
-
-    public void setFileName(String name) {
-        this.fileName = name;
-    }
-
+ 
+    /***********SETTERS & GETTERS***********/
+    
     public void setFile(File file) {
         this.file = file;
-
+    }
+    
+    public void setFileName(String name) {
+        this.fileName = name;
     }
 
     public File getFile() {
@@ -55,35 +40,9 @@ public class HandleFiles {
     public String getFileName() {
         return fileName;
     }
-
-    /**
-     * ******************************************************
-     */
-    public void addFileToFileList() {
-        this.fileList.put(fileName, file);
-    }
-
-    public void addOpenedFileToFileList(String name, File file) {
-        this.fileList.put(name, file);
-    }
-
-    /**
-     * ******************************************************
-     */
+    
     public File getFileFromFileList(String name) {
         return fileList.get(name);
-    }
-
-    public boolean fileExistsInFileList(String name) {
-        if (fileList.containsKey(name)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public int getFileListSize() {
-        return fileList.size();
     }
     
     public ArrayList<String> getFilesArray() {
@@ -94,21 +53,27 @@ public class HandleFiles {
         return fileArrayList;
     }
     
+    /*********FILE LISTS(HASH/ARRAY)********/
     
-
+    public void addFileToFileList() {
+        this.fileList.put(fileName, file);
+    }
+    
     public void deleteFileFromFileList(String name) {
-        fileList.remove(name);
+        this.fileList.remove(name);
     }
 
-    /**
-     * ******************************************************
-     */
+    public void addOpenedFileToFileList(String name, File file) {
+        this.fileList.put(name, file);
+    }
+    
+    /**************FILE HANDLING************/
+    
     public void writeToFile(String content) {
         try {
             String temporary = readFile(this.fileName);
             PrintWriter writer = new PrintWriter(new File(this.fileName));
-            writer.print(temporary);
-            writer.print(content);
+            writer.print(temporary); writer.print(content);
             writer.close();
         } catch (Exception e) {
             System.out.println("An error occurred when writing / copying the file");
@@ -119,7 +84,6 @@ public class HandleFiles {
         Scanner reader = new Scanner(new File(name));
         String text = reader.nextLine();
         return text;
-
     }
 
     public void createFile(String name) {
