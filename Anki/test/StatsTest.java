@@ -30,7 +30,7 @@ public class StatsTest {
     
     
     @Test
-    public void countPercentWorks() {
+    public void countPercentToimiiOikein() {
         stats.countToCorrectAnswers();
         stats.countToIncorrectAnswers();
         stats.countToIncorrectAnswers();

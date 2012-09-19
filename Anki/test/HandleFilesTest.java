@@ -28,29 +28,45 @@ public class HandleFilesTest {
 
     @Test
     public void createFileLuoTiedoston () {
-        test.createFile("testi");
+        test.createFile("exist");
         assertNotNull(test.getFile());
     }
 
     @Test
     public void createFileLuoHalutunNimisenTiedoston () {
-        test.createFile("testi");
-        assertEquals("testi", test.getFileName());
+        test.createFile("createFile");
+        assertEquals("createFile", test.getFileName());
 
     }
     
-    @Test
-    public void writeFileKirjoittaaHalutunTekstin1() throws FileNotFoundException {
-        test.createFile("testi");
-        test.writeToFile("sana1:sana2:");
-        assertEquals("testi=sana1:sana2:", test.readFile("testi"));
-    }
-    
     @Test 
-    public void writeFileKirjoittaaHalutunTekstin2() throws FileNotFoundException {
-        test.createFile("testix");
+    public void writeFileKirjoittaaHalutunTekstin1() throws FileNotFoundException {
+        test.createFile("writeFile");
         test.writeToFile("sana1:sana2:");
         test.writeToFile("sana3:sana4:");
-        assertEquals("testix=sana1:sana2:sana3:sana4:", test.readFile("testix"));
+        assertEquals("writeFile=sana1:sana2:sana3:sana4:", test.readFile("writeFile"));
     }
+    
+    @Test
+    public void readFileLukeeOikein() throws FileNotFoundException {
+        test.createFile("readFile");
+        test.writeToFile("this was returned correctly");
+        assertEquals("readFile=this was returned correctly", test.readFile("readFile"));
+    }
+    
+    @Test
+    public void addFileToFileListToimii() {
+        test.createFile("fileListExist");
+        test.writeToFile("this should be in list");
+        assertEquals(true, test.fileExistsInFileList("fileListExist"));
+    }
+    
+    @Test
+    public void deleteFileFromFileListToimii() {
+        test.createFile("removable");
+        test.writeToFile("this should be removed");
+        test.deleteFileFromFileList("removable");
+        assertEquals(false, test.fileExistsInFileList("removable"));
+    }
+    
 }

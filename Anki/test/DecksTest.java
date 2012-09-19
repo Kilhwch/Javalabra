@@ -33,12 +33,12 @@ public class DecksTest {
     
     
     @Test
-    public void deckStartsEmpty() {
+    public void pakkaOnTyhja() {
         assertEquals(0, deck.getCount(), vertailuTarkkuus);
     }
     
     @Test
-    public void deckCountsProperly() {
+    public void deckCountLaskeeOikein() {
         Cards testCard1 = new Cards("Moi", "Hey");
         deck.add(testCard1);
         
@@ -46,7 +46,7 @@ public class DecksTest {
     }
     
     @Test
-    public void deckRemovesCardsCorrectly() {
+    public void deletePoistaaPakan() {
         Cards testCard1 = new Cards("Moi", "Hey");
         deck.add(testCard1);
         deck.delete(testCard1);
@@ -61,23 +61,25 @@ public class DecksTest {
     }
     
     @Test
-    public void deckNamesCorrect() {
+    public void getDeckNamePalauttaaNimen() {
         assertEquals("pakka", deck.getDeckName());
     }
     
     @Test
-    public void deckIsInTheList() {
+    public void pakanLisaysListaan() {
         Assert.assertTrue(deck.deckExists("pakka"));
     }
 
     @Test
-    public void ReturnsGetNextWordCorrectly() {
+    public void ReturnsGetNextWordPalauttaaOikean() {
         Cards testCard1 = new Cards("Moi", "Hello");
         Cards testCard2 = new Cards("Toka", "Second");
         deck.add(testCard1);
         deck.add(testCard2);
         assertEquals("Toka", deck.getNextWord(1));
     }
+    
+    
     
     
 

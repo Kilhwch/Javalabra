@@ -14,8 +14,20 @@ import anki.Cards;
 import anki.Decks;
 import anki.HandleFiles;
 import anki.Stats;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.io.File;
+import java.util.logging.FileHandler;
+import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.ListSelectionModel;
 
 public class UI extends javax.swing.JFrame {
 
@@ -51,6 +63,8 @@ public class UI extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         NewDeckFieldOkButton = new javax.swing.JButton();
         NewDeckFieldCancel = new javax.swing.JButton();
+        jSeparator4 = new javax.swing.JSeparator();
+        jSeparator5 = new javax.swing.JSeparator();
         DrillWindow = new javax.swing.JDialog();
         DrillWIndowSeparator = new javax.swing.JSeparator();
         DrillShowWordLabel = new java.awt.Label();
@@ -76,6 +90,9 @@ public class UI extends javax.swing.JFrame {
         UiStartDrillingButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         UiOpenFileButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList();
+        jLabel4 = new javax.swing.JLabel();
         UiTopMenu = new javax.swing.JMenuBar();
         UiTopMenuFile = new javax.swing.JMenu();
         UiTopMenuEdit = new javax.swing.JMenu();
@@ -149,7 +166,7 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
-        AddDeckNameWindow.setMinimumSize(new java.awt.Dimension(206, 165));
+        AddDeckNameWindow.setMinimumSize(new java.awt.Dimension(300, 300));
         AddDeckNameWindow.setResizable(false);
 
         NewDeckNameField.addActionListener(new java.awt.event.ActionListener() {
@@ -167,6 +184,11 @@ public class UI extends javax.swing.JFrame {
                 NewDeckFieldOkButtonMouseClicked(evt);
             }
         });
+        NewDeckFieldOkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewDeckFieldOkButtonActionPerformed(evt);
+            }
+        });
 
         NewDeckFieldCancel.setText("Cancel");
         NewDeckFieldCancel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -180,29 +202,40 @@ public class UI extends javax.swing.JFrame {
         AddDeckNameWindowLayout.setHorizontalGroup(
             AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                        .addComponent(NewDeckFieldOkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(16, 16, 16)
-                        .addComponent(NewDeckFieldCancel))
-                    .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(NewDeckNameField, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                        .addGap(37, 37, 37)
+                        .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
+                                .addComponent(NewDeckFieldOkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(NewDeckFieldCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(NewDeckNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
+                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         AddDeckNameWindowLayout.setVerticalGroup(
             AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                .addGap(12, 12, 12)
+                .addGap(52, 52, 52)
+                .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(NewDeckNameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NewDeckNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NewDeckFieldOkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NewDeckFieldCancel))
-                .addGap(60, 60, 60))
+                    .addComponent(NewDeckFieldOkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NewDeckFieldCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         DrillWindow.setMinimumSize(new java.awt.Dimension(350, 469));
@@ -251,20 +284,20 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(DrillWindowLayout.createSequentialGroup()
-                        .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(DrillWindowLayout.createSequentialGroup()
-                        .addComponent(DrillShowWordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                        .addComponent(DrillShowWordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                         .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrillWindowLayout.createSequentialGroup()
-                        .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                            .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE))
+                        .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                         .addGap(27, 27, 27))
                     .addGroup(DrillWindowLayout.createSequentialGroup()
-                        .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
-                        .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE)
+                        .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrillWindowLayout.createSequentialGroup()
+                        .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                            .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         DrillWindowLayout.setVerticalGroup(
@@ -307,27 +340,29 @@ public class UI extends javax.swing.JFrame {
         StatsWindowLayout.setHorizontalGroup(
             StatsWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGroup(StatsWindowLayout.createSequentialGroup()
+                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(StatsWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(StatsShowDeckName, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                .addGap(66, 66, 66))
             .addGroup(StatsWindowLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(StatsWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(StatsWindowLayout.createSequentialGroup()
-                        .addGroup(StatsWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(StatsShowInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 54, Short.MAX_VALUE))
-                    .addComponent(StatsShowDeckName, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(StatsShowInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         StatsWindowLayout.setVerticalGroup(
             StatsWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(StatsWindowLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(StatsShowDeckName, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addContainerGap()
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(StatsShowInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(StatsShowDeckName, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(StatsShowInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
@@ -361,7 +396,7 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
-        UiCloseButton.setText("Close");
+        UiCloseButton.setText("Quit");
         UiCloseButton.setMaximumSize(new java.awt.Dimension(80, 20));
         UiCloseButton.setMinimumSize(new java.awt.Dimension(80, 20));
         UiCloseButton.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -389,6 +424,11 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
+        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        jScrollPane1.setViewportView(jList1);
+
+        jLabel4.setText("Choose a file and click start:");
+
         UiTopMenuFile.setText("File");
         UiTopMenuFile.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -407,39 +447,49 @@ public class UI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                        .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addContainerGap(255, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(154, 154, 154)
+                .addGap(23, 23, 23)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-416)/2, (screenSize.height-338)/2, 416, 338);
+        setBounds((screenSize.width-416)/2, (screenSize.height-438)/2, 416, 438);
     }// </editor-fold>//GEN-END:initComponents
 
     private void NewDeckNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckNameFieldActionPerformed
@@ -453,6 +503,7 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_UiNewDeckButtonMouseClicked
 
     private void NewDeckFieldOkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonMouseClicked
+
         deck.setDeckName(NewDeckNameField.getText());
         handler.createFile(NewDeckNameField.getText());
 
@@ -460,6 +511,7 @@ public class UI extends javax.swing.JFrame {
         AddNewWordWindow.setLocationRelativeTo(this);
         AddNewWordWindow.setTitle("Create new cards - " + deck.getDeckName());
         AddNewWordWindow.setVisible(true);
+
     }//GEN-LAST:event_NewDeckFieldOkButtonMouseClicked
 
     private void NewDeckFieldCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewDeckFieldCancelMouseClicked
@@ -474,7 +526,7 @@ public class UI extends javax.swing.JFrame {
         Cards newCard = new Cards(NewWordField.getText(), NewTranslationField.getText());
         deck.add(newCard);
         String temporary = NewWordField.getText() + ":" + NewTranslationField.getText() + ":";
-//        handler.writeToFile(handler.getFileName(), temporary);
+        handler.writeToFile(temporary);
 
         NewWordField.setText("");
         NewTranslationField.setText("");
@@ -494,7 +546,6 @@ public class UI extends javax.swing.JFrame {
         DrillEvaluateCorrectButton.setVisible(false);
         DrillEvaluateIncorrectButton.setVisible(false);
         DrillShowWordLabel.setText(deck.getNextWord(wordIndex));
-
     }//GEN-LAST:event_UiStartDrillingButtonActionPerformed
 
     private void DrillEvaluateCorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateCorrectButtonActionPerformed
@@ -504,7 +555,6 @@ public class UI extends javax.swing.JFrame {
 
     private void DrillEvaluateIncorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateIncorrectButtonActionPerformed
         stats.countToIncorrectAnswers();
-
         allCardsGonethroughCheck();
     }//GEN-LAST:event_DrillEvaluateIncorrectButtonActionPerformed
 
@@ -525,27 +575,23 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_FileChooserActionPerformed
 
     private void UiOpenFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiOpenFileButtonActionPerformed
-//        do {
-//            JFileChooser chooser = new JFileChooser();
-//            FileNameExtensionFilter filter = new FileNameExtensionFilter("txt");
-//            chooser.setFileFilter(filter);
-//            int returnVal = chooser.showOpenDialog(null);
-//            try {
-//                if (returnVal == JFileChooser.APPROVE_OPTION) {
-////                    return new Scanner(chooser.getSelectedFile());
-////                } else {
-////                    return null;
-//                }
-//
-//            } catch (FileNotFoundException e) {
-//                JOptionPane.showMessageDialog(null, "Invalid file!", "error", JOptionPane.ERROR_MESSAGE);
-//            }
-//        } while (true);
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File openedfile = chooser.getSelectedFile();
+        String openedfilename = openedfile.getName();
+        handler.addOpenedFileToFileList(openedfilename, file);
+                
+            
+        
     }//GEN-LAST:event_UiOpenFileButtonActionPerformed
 
     private void UiNewDeckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiNewDeckButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_UiNewDeckButtonActionPerformed
+
+    private void NewDeckFieldOkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NewDeckFieldOkButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -625,15 +671,20 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JList jList1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
     // End of variables declaration//GEN-END:variables
 
     private void allCardsGonethroughCheck() {

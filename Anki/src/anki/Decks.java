@@ -15,7 +15,7 @@ public class Decks {
         deck = new ArrayList<Cards>();
 
     }
-    
+
     public Decks(String name) {
         deck = new ArrayList<Cards>();
         this.deckName = name;
@@ -30,16 +30,15 @@ public class Decks {
         return this.deckName;
     }
 
-    
     public void addDecktoDeckList() {
         deckList.put(deckName, this.deck);
     }
-    
+
     public void add(Cards card) {
         deck.add(card);
         ++count;
     }
-    
+
     public void delete(Cards card) {
         deck.remove(card);
         --count;
@@ -65,11 +64,8 @@ public class Decks {
             return false;
         }
     }
-    
-    
-    /**********************************************************************/
-    /*deckExist antaa openADeckByName:lle käskyn palauttaa lista jos löytyy/
-    /**********************************************************************/
+
+    /*********************************************************/
     public boolean deckExists(String name) {
         for (int i = 0; i < deckList.size(); i++) {
             if (deckList.containsKey(name)) {
@@ -78,36 +74,9 @@ public class Decks {
             }
         }
         return false;
-    }                                                            
-                                                                
-    public ArrayList<Cards> openADeckByName(String name) {       
+    }
+
+    public ArrayList<Cards> openADeckByName(String name) {
         return deckList.get(name); // PALAUTTAAKO OIKEAN LISTAN???                           
-    }                                                            
-    
-    /**********************************************************************/
-    /*deckExist antaa openADeckByName:lle käskyn palauttaa lista jos löytyy/
-    /**********************************************************************/
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-//    public HashMap<String, String> returnAllWords() {
-//        list = new HashMap<String, String>();
-//
-//        for (int i = 0; i < deck.size(); i++) {
-//            String temporaryWord = deck.get(i).getWord();
-//            String temporaryTranslation = deck.get(i).getTranslation();
-//
-//            list.put(temporaryWord, temporaryTranslation);
-//        }
-//        return list;
-//    }
-//}

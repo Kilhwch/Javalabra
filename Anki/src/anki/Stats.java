@@ -37,9 +37,10 @@ public class Stats {
 
     }
 
+    /*********************************************************/
     public double countPercents() {
         double percent = ((correctAnswers / (double) getTotalAnswers()) * 100);
-        percent = Math.round(percent*100.0) / 100.0;
+        percent = Math.round(percent * 100.0) / 100.0;
         return percent;
     }
 
