@@ -11,6 +11,7 @@ import java.lang.String;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.logging.Handler;
 
 //    public void createFile(File newDeckFile) {
 //        throw new UnsupportedOperationException("Not yet implemented");
@@ -23,8 +24,9 @@ import java.util.Scanner;
  * @author Kasper
  */
 public class HandleFiles {
-
+    
     private HashMap<String, File> fileList = new HashMap<String, File>();
+    private ArrayList<String> fileArrayList;
     private String fileName;
     private File file;
 
@@ -53,43 +55,54 @@ public class HandleFiles {
     public String getFileName() {
         return fileName;
     }
-    
-/*********************************************************/
+
+    /**
+     * ******************************************************
+     */
     public void addFileToFileList() {
         this.fileList.put(fileName, file);
     }
-    
+
     public void addOpenedFileToFileList(String name, File file) {
         this.fileList.put(name, file);
     }
-/*********************************************************/
-    
+
+    /**
+     * ******************************************************
+     */
     public File getFileFromFileList(String name) {
         return fileList.get(name);
     }
-    
 
-    
-    
     public boolean fileExistsInFileList(String name) {
-        if (fileList.containsKey(name))
+        if (fileList.containsKey(name)) {
             return true;
-        else
+        } else {
             return false;
+        }
     }
-    
+
     public int getFileListSize() {
         return fileList.size();
     }
     
+    public ArrayList<String> getFilesArray() {
+        fileArrayList = new ArrayList<String>();
+        for (String added : fileList.keySet()) {
+            fileArrayList.add(added);
+        }
+        return fileArrayList;
+    }
     
+    
+
     public void deleteFileFromFileList(String name) {
         fileList.remove(name);
     }
-    
 
-
-    /*********************************************************/
+    /**
+     * ******************************************************
+     */
     public void writeToFile(String content) {
         try {
             String temporary = readFile(this.fileName);

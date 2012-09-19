@@ -18,6 +18,7 @@ import java.awt.Color;
 import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.List;
 import java.io.File;
 import java.util.logging.FileHandler;
 import javax.swing.BoxLayout;
@@ -90,9 +91,13 @@ public class UI extends javax.swing.JFrame {
         UiStartDrillingButton = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         UiOpenFileButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList();
+        ScrollPane = new javax.swing.JScrollPane();
+        jList = new javax.swing.JList();
         jLabel4 = new javax.swing.JLabel();
+        UiUpdateListButton = new javax.swing.JButton();
+        UiDeleteButton = new javax.swing.JButton();
+        UiEditButton = new javax.swing.JButton();
+        jSeparator6 = new javax.swing.JSeparator();
         UiTopMenu = new javax.swing.JMenuBar();
         UiTopMenuFile = new javax.swing.JMenu();
         UiTopMenuEdit = new javax.swing.JMenu();
@@ -241,9 +246,9 @@ public class UI extends javax.swing.JFrame {
         DrillWindow.setMinimumSize(new java.awt.Dimension(350, 469));
         DrillWindow.setResizable(false);
 
-        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24));
+        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
-        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24));
+        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
         DrillEvaluateCorrectButton.setText("Correct");
         DrillEvaluateCorrectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -321,11 +326,11 @@ public class UI extends javax.swing.JFrame {
         StatsWindow.setMinimumSize(new java.awt.Dimension(250, 250));
         StatsWindow.setResizable(false);
 
-        StatsShowDeckName.setFont(new java.awt.Font("Tahoma", 0, 18));
+        StatsShowDeckName.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
-        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14));
+        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14));
+        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -424,10 +429,26 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
-        jList1.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        jScrollPane1.setViewportView(jList1);
+        jList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        ScrollPane.setViewportView(jList);
 
         jLabel4.setText("Choose a file and click start:");
+
+        UiUpdateListButton.setText("Update List");
+        UiUpdateListButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UiUpdateListButtonActionPerformed(evt);
+            }
+        });
+
+        UiDeleteButton.setText("Delete");
+        UiDeleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UiDeleteButtonActionPerformed(evt);
+            }
+        });
+
+        UiEditButton.setText("Edit");
 
         UiTopMenuFile.setText("File");
         UiTopMenuFile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -450,24 +471,29 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 507, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(ScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(UiDeleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UiEditButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(33, 33, 33))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(UiUpdateListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                        .addGap(32, 32, 32)
                         .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addContainerGap(255, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                        .addContainerGap())))
+                        .addGap(152, 152, 152))
+                    .addComponent(jSeparator6)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -475,21 +501,30 @@ public class UI extends javax.swing.JFrame {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(UiEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(UiDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addComponent(UiUpdateListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(44, 44, 44)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-416)/2, (screenSize.height-438)/2, 416, 438);
+        setBounds((screenSize.width-541)/2, (screenSize.height-464)/2, 541, 464);
     }// </editor-fold>//GEN-END:initComponents
 
     private void NewDeckNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckNameFieldActionPerformed
@@ -540,6 +575,7 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_UiCloseButtonActionPerformed
 
     private void UiStartDrillingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiStartDrillingButtonActionPerformed
+        
         DrillWindow.setLocationRelativeTo(this);
         DrillWindow.setTitle("Practice");
         DrillWindow.setVisible(true);
@@ -579,8 +615,8 @@ public class UI extends javax.swing.JFrame {
         chooser.showOpenDialog(null);
         File openedfile = chooser.getSelectedFile();
         String openedfilename = openedfile.getName();
-        handler.addOpenedFileToFileList(openedfilename, file);
-                
+        handler.addOpenedFileToFileList(openedfilename, this.file);
+        
             
         
     }//GEN-LAST:event_UiOpenFileButtonActionPerformed
@@ -592,6 +628,17 @@ public class UI extends javax.swing.JFrame {
     private void NewDeckFieldOkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_NewDeckFieldOkButtonActionPerformed
+
+    private void UiUpdateListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiUpdateListButtonActionPerformed
+   
+        jList.setListData(handler.getFilesArray().toArray());
+        jList.setSelectedIndex(0);
+        jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    }//GEN-LAST:event_UiUpdateListButtonActionPerformed
+
+    private void UiDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiDeleteButtonActionPerformed
+        
+    }//GEN-LAST:event_UiDeleteButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -657,34 +704,38 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JButton NewWordAddButton;
     private javax.swing.JButton NewWordCancelButton;
     private javax.swing.JTextField NewWordField;
+    private javax.swing.JScrollPane ScrollPane;
     private javax.swing.JLabel StatsShowDeckName;
     private javax.swing.JLabel StatsShowInformation;
     private javax.swing.JLabel StatsShowInformation2;
     private javax.swing.JDialog StatsWindow;
     private javax.swing.JButton UiCloseButton;
+    private javax.swing.JButton UiDeleteButton;
+    private javax.swing.JButton UiEditButton;
     private javax.swing.JButton UiNewDeckButton;
     private javax.swing.JButton UiOpenFileButton;
     private javax.swing.JButton UiStartDrillingButton;
     private javax.swing.JMenuBar UiTopMenu;
     private javax.swing.JMenu UiTopMenuEdit;
     private javax.swing.JMenu UiTopMenuFile;
+    private javax.swing.JButton UiUpdateListButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList jList1;
+    private javax.swing.JList jList;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar3;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     // End of variables declaration//GEN-END:variables
 
     private void allCardsGonethroughCheck() {
