@@ -12,7 +12,11 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.List;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -527,10 +531,10 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_UiNewDeckButtonMouseClicked
 
     private void NewDeckFieldOkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonMouseClicked
-
         deck.setDeckName(NewDeckNameField.getText());
         handler.createFile(NewDeckNameField.getText());
-
+        
+        
         AddDeckNameWindow.setVisible(false);
         AddNewWordWindow.setLocationRelativeTo(this);
         AddNewWordWindow.setTitle("Create new cards - " + deck.getDeckName());
@@ -619,10 +623,18 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_NewDeckFieldOkButtonActionPerformed
 
     private void UiUpdateListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiUpdateListButtonActionPerformed
-   
-        jList.setListData(handler.getFilesArray().toArray());
+        try {
+            jList.setListData(handler.getFilesFromTextFile().toArray());
+        } catch (Exception e) {
+            System.out.println("UiUpdateListButtonActionPerformed = ERROR");
+        }
         jList.setSelectedIndex(0);
         jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+        
+//        jList.setListData(handler.getFilesArray().toArray());
+//        jList.setSelectedIndex(0);
+//        jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }//GEN-LAST:event_UiUpdateListButtonActionPerformed
 
     private void UiDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiDeleteButtonActionPerformed

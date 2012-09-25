@@ -54,19 +54,4 @@ public class HandleFilesTest {
         assertEquals("readFile=this was returned correctly", test.readFile("readFile"));
     }
     
-//    @Test
-//    public void addFileToFileListToimii() {
-//        test.createFile("fileListExist");
-//        test.writeToFile("this should be in list");
-//        assertEquals(true, test.fileExistsInFileList("fileListExist"));
-//    }
-    
-//    @Test
-//    public void deleteFileFromFileListToimii() {
-//        test.createFile("removable");
-//        test.writeToFile("this should be removed");
-//        test.deleteFileFromFileList("removable");
-//        assertEquals(false, test.fileExistsInFileList("removable"));
-//    }
-    
 }
