@@ -6,33 +6,22 @@ import anki.Cards;
 import anki.Decks;
 import anki.HandleFiles;
 import anki.Stats;
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-import java.awt.List;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
+import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JList;
-import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 
 public class UI extends javax.swing.JFrame {
 
     private File file;
+    private ArrayList<String> words = new ArrayList<String>();
     private HandleFiles handler = new HandleFiles(file, getName());
     private Decks deck = new Decks();
     private Stats stats = new Stats();
     private int wordIndex = 0;
+    private int translationIndex = 0;
+    
 
     /** Creates new form UI */
     public UI() {
@@ -568,16 +557,23 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_UiCloseButtonActionPerformed
 
     private void UiStartDrillingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiStartDrillingButtonActionPerformed
-        
         DrillWindow.setLocationRelativeTo(this);
         DrillWindow.setTitle("Practice");
         DrillWindow.setVisible(true);
         DrillEvaluateCorrectButton.setVisible(false);
         DrillEvaluateIncorrectButton.setVisible(false);
-        DrillShowWordLabel.setText(deck.getNextWord(wordIndex));
+        String selected = jList.getSelectedValue().toString();
+        System.out.println(selected);
+        try {
+        words = handler.loadDeck(selected);
+        } catch (Exception e) {
+            System.out.println("UiStartDrillingButton = ERROR");
+        }
+        DrillShowWordLabel.setText(words.get(wordIndex));
     }//GEN-LAST:event_UiStartDrillingButtonActionPerformed
 
     private void DrillEvaluateCorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateCorrectButtonActionPerformed
+        ++wordIndex;
         stats.countToCorrectAnswers();
         allCardsGonethroughCheck();
     }//GEN-LAST:event_DrillEvaluateCorrectButtonActionPerformed
@@ -588,13 +584,13 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_DrillEvaluateIncorrectButtonActionPerformed
 
     private void DrillShowAnswerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillShowAnswerButtonActionPerformed
+
         DrillShowAnswerButton.setVisible(false);
         DrillEvaluateCorrectButton.setVisible(true);
         DrillEvaluateIncorrectButton.setVisible(true);
         DrillShowAnswerLabel.setVisible(true);
-        DrillShowAnswerLabel.setText(deck.getNextTranslation(wordIndex));
+        DrillShowAnswerLabel.setText(words.get(wordIndex+1));
         ++wordIndex;
-
     }//GEN-LAST:event_DrillShowAnswerButtonActionPerformed
 
     private void UiTopMenuFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UiTopMenuFileMouseClicked
@@ -630,11 +626,6 @@ public class UI extends javax.swing.JFrame {
         }
         jList.setSelectedIndex(0);
         jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-        
-//        jList.setListData(handler.getFilesArray().toArray());
-//        jList.setSelectedIndex(0);
-//        jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
     }//GEN-LAST:event_UiUpdateListButtonActionPerformed
 
     private void UiDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiDeleteButtonActionPerformed
@@ -740,21 +731,21 @@ public class UI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     private void allCardsGonethroughCheck() {
-        if (deck.allWordsReviewed(wordIndex) == true) {
+        if (wordIndex == words.size()) {
             StatsWindow.setLocationRelativeTo(this);
             DrillWindow.setVisible(false);
             StatsWindow.pack();
             StatsWindow.setVisible(true);
-            StatsShowDeckName.setText("Deck: " + deck.getDeckName());
+      /*      StatsShowDeckName.setText("Deck: " + ); EDIT*/
             StatsShowInformation.setText(stats.getTotalCorrectStats());
             StatsShowInformation2.setText(stats.getTotalIncorrectStats());
+            wordIndex = 0;
 
         } else {
-
-
+           
             DrillShowAnswerLabel.setText("");
             DrillShowAnswerButton.setVisible(true);
-            DrillShowWordLabel.setText(deck.getNextWord(wordIndex));
+            DrillShowWordLabel.setText(words.get(wordIndex));
 
             DrillEvaluateCorrectButton.setVisible(false);
             DrillEvaluateIncorrectButton.setVisible(false);

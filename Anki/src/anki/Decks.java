@@ -6,7 +6,7 @@ import java.util.HashMap;
 
 public class Decks {
 
-    private HashMap<String, ArrayList<Cards>> deckList = new HashMap<String, ArrayList<Cards>>();
+    private HashMap<String, ArrayList<Cards>> deckList;
     private ArrayList<Cards> deck;
     private String deckName;
     private int count = 0;
@@ -16,6 +16,7 @@ public class Decks {
     }
 
     public Decks(String name) {
+        this.deckList = new HashMap<String, ArrayList<Cards>>();
         this.deck = new ArrayList<Cards>();
         this.deckName = name;
     }

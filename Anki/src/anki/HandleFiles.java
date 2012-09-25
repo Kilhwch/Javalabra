@@ -60,6 +60,18 @@ public class HandleFiles {
 
     /**************FILE HANDLING************/
     
+    public ArrayList<String> loadDeck(String name) throws FileNotFoundException {
+        ArrayList<String> list = new ArrayList<String>();
+        
+        Scanner reader = new Scanner(new File("./Tiedostot/"+name));
+        
+        while (reader.hasNext()) {
+            list.add(reader.nextLine());
+        }
+        reader.close();
+        return list;
+    }
+    
     public ArrayList<String> getFilesFromTextFile() throws FileNotFoundException, IOException {
         ArrayList<String> list = new ArrayList<String>();
         Scanner reader = new Scanner(new File("./Tiedostot/Tiedostolista"));
