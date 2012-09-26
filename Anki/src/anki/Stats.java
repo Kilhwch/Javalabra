@@ -1,50 +1,67 @@
 package anki;
 
-
 public class Stats {
+
     private int correctAnswers;
     private int incorrectAnswers;
 
     public Stats() {
     }
 
-    /***********SETTERS & GETTERS***********/
-    
-    
-    public int getCorrectAnswers() {
-        return correctAnswers;
-    }
-
-    public int getIncorrectAnswers() {
-        return incorrectAnswers;
-    }
-
+    /**
+     * Metodi palauttaa kaikkien vastauksien kokonaismäärän
+     * 
+     * @return Integer
+     */
     public int getTotalAnswers() {
         return correctAnswers + incorrectAnswers;
     }
-    
+
+    /**
+     * Metodi palauttaa oikeiden vastauksien määrän
+     * ja prosentuaalisen arvon
+     * 
+     * @return String
+     */
     public String getTotalCorrectStats() {
-        return "Corrects answers: [" + 
-                correctAnswers + "]" + "(" + countPercents() * 1 + "% )";
+        return "Corrects answers: ["
+                + correctAnswers + "]" + " (" + countPercents() * 1 + "%)";
     }
 
+    /**
+     * Metodi palauttaa väärien vastauksien määrän
+     * ja prosentuaalisen arvon
+     * 
+     * @return String
+     */
     public String getTotalIncorrectStats() {
-        return "Incorrects answers: [" + 
-                incorrectAnswers + "]" + "(" + (100.0 - (countPercents() * 1)) + "% )";
+        return "Incorrects answers: ["
+                + incorrectAnswers + "]" + " (" + (100.0 - (countPercents() * 1)) + "%)";
     }
-    
-    /*************COUNT ANSWERS*************/
-    
+
+    /**
+     * Metodi kasvattaa oikeiden vastauksien määrää
+     * 
+     * @return Tyhjä
+     */
     public void countToCorrectAnswers() {
         ++correctAnswers;
     }
 
+    /**
+     * Metodi kasvattaa väärien vastauksien määrää
+     * 
+     * @return Tyhjä
+     */
     public void countToIncorrectAnswers() {
         ++incorrectAnswers;
     }
 
-    /******************MATH*****************/
-    
+    /**
+     * Metodi laskee oikeiden vastauksien määrän prosentteina
+     * 
+     * @return Double
+     */
     public double countPercents() {
         double percent = ((correctAnswers / (double) getTotalAnswers()) * 100);
         percent = Math.round(percent * 100.0) / 100.0;

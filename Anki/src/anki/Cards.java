@@ -10,12 +10,22 @@ public class Cards {
         this.word = word;
         this.translation = translation;
     }
-
-    /***********SETTERS & GETTERS***********/
+    
+    /**
+    * Metodi palauttaa sanan
+    *
+    * @return String
+    */
     
     public String getWord() {
         return this.word;
     }
+    
+    /**
+    * Metodi palauttaa käännöksen
+    *
+    * @return String
+    */
 
     public String getTranslation() {
         return this.translation;

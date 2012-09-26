@@ -10,6 +10,7 @@ import java.io.File;
 import java.util.ArrayList;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
 public class UI extends javax.swing.JFrame {
@@ -20,7 +21,6 @@ public class UI extends javax.swing.JFrame {
     private Decks deck = new Decks();
     private Stats stats = new Stats();
     private int wordIndex = 0;
-    private int translationIndex = 0;
     
 
     /** Creates new form UI */
@@ -38,7 +38,7 @@ public class UI extends javax.swing.JFrame {
         NewWordAddButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        NewWordCancelButton = new javax.swing.JButton();
+        NewWordDoneButton = new javax.swing.JButton();
         AddDeckNameWindow = new javax.swing.JDialog();
         NewDeckNameField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -59,9 +59,9 @@ public class UI extends javax.swing.JFrame {
         StatsWindow = new javax.swing.JDialog();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        StatsShowDeckName = new javax.swing.JLabel();
         StatsShowInformation = new javax.swing.JLabel();
         StatsShowInformation2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
@@ -85,12 +85,6 @@ public class UI extends javax.swing.JFrame {
         AddNewWordWindow.setMinimumSize(new java.awt.Dimension(230, 333));
         AddNewWordWindow.setResizable(false);
 
-        NewWordField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewWordFieldActionPerformed(evt);
-            }
-        });
-
         NewWordAddButton.setText("Add");
         NewWordAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -102,10 +96,10 @@ public class UI extends javax.swing.JFrame {
 
         jLabel2.setText("Word");
 
-        NewWordCancelButton.setText("Close");
-        NewWordCancelButton.addActionListener(new java.awt.event.ActionListener() {
+        NewWordDoneButton.setText("Done");
+        NewWordDoneButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewWordCancelButtonActionPerformed(evt);
+                NewWordDoneButtonActionPerformed(evt);
             }
         });
 
@@ -130,7 +124,7 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap(25, Short.MAX_VALUE))
             .addGroup(AddNewWordWindowLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(NewWordCancelButton, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                .addComponent(NewWordDoneButton, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
                 .addGap(25, 25, 25))
         );
         AddNewWordWindowLayout.setVerticalGroup(
@@ -147,7 +141,7 @@ public class UI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(NewWordAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(NewWordCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NewWordDoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(63, Short.MAX_VALUE))
         );
 
@@ -164,11 +158,6 @@ public class UI extends javax.swing.JFrame {
 
         NewDeckFieldOkButton.setText("OK");
         NewDeckFieldOkButton.setPreferredSize(new java.awt.Dimension(65, 23));
-        NewDeckFieldOkButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                NewDeckFieldOkButtonMouseClicked(evt);
-            }
-        });
         NewDeckFieldOkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NewDeckFieldOkButtonActionPerformed(evt);
@@ -189,20 +178,20 @@ public class UI extends javax.swing.JFrame {
             .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
                 .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
+                        .addContainerGap()
+                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
+                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator5, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
+                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
+                        .addGap(55, 55, 55)
                         .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
                                 .addComponent(NewDeckFieldOkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(NewDeckFieldCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(NewDeckNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
-                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         AddDeckNameWindowLayout.setVerticalGroup(
@@ -223,12 +212,13 @@ public class UI extends javax.swing.JFrame {
                 .addContainerGap(58, Short.MAX_VALUE))
         );
 
+        DrillWindow.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         DrillWindow.setMinimumSize(new java.awt.Dimension(350, 469));
         DrillWindow.setResizable(false);
 
-        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24));
+        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
-        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24));
+        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
         DrillEvaluateCorrectButton.setText("Correct");
         DrillEvaluateCorrectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -268,49 +258,51 @@ public class UI extends javax.swing.JFrame {
             .addGroup(DrillWindowLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DrillWindowLayout.createSequentialGroup()
-                        .addComponent(DrillShowWordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                        .addGap(27, 27, 27))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrillWindowLayout.createSequentialGroup()
-                        .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
-                        .addGap(27, 27, 27))
-                    .addGroup(DrillWindowLayout.createSequentialGroup()
-                        .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrillWindowLayout.createSequentialGroup()
-                        .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
-                            .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
+                    .addGroup(DrillWindowLayout.createSequentialGroup()
+                        .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                        .addGap(27, 27, 27))
+                    .addGroup(DrillWindowLayout.createSequentialGroup()
+                        .addComponent(DrillShowWordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                        .addGap(27, 27, 27))
+                    .addGroup(DrillWindowLayout.createSequentialGroup()
+                        .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DrillWindowLayout.createSequentialGroup()
+                                .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap())))
         );
         DrillWindowLayout.setVerticalGroup(
             DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DrillWindowLayout.createSequentialGroup()
-                .addGap(79, 79, 79)
+                .addGap(54, 54, 54)
                 .addComponent(DrillShowWordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(69, 69, 69)
                 .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(20, 20, 20)
                 .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(91, Short.MAX_VALUE))
+                    .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         StatsWindow.setMinimumSize(new java.awt.Dimension(250, 250));
         StatsWindow.setResizable(false);
 
-        StatsShowDeckName.setFont(new java.awt.Font("Tahoma", 0, 18));
+        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14));
+        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Results:");
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -324,42 +316,31 @@ public class UI extends javax.swing.JFrame {
         StatsWindow.getContentPane().setLayout(StatsWindowLayout);
         StatsWindowLayout.setHorizontalGroup(
             StatsWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-            .addGroup(StatsWindowLayout.createSequentialGroup()
-                .addComponent(jSeparator2, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(StatsWindowLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(StatsShowDeckName, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-                .addGap(66, 66, 66))
             .addGroup(StatsWindowLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(StatsWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(StatsShowInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(66, Short.MAX_VALUE))
+                    .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         StatsWindowLayout.setVerticalGroup(
             StatsWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(StatsWindowLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(StatsShowDeckName, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(StatsShowInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
-
-        FileChooser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                FileChooserActionPerformed(evt);
-            }
-        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBounds(new java.awt.Rectangle(800, 300, 0, 0));
@@ -370,11 +351,6 @@ public class UI extends javax.swing.JFrame {
         UiNewDeckButton.setMaximumSize(new java.awt.Dimension(80, 20));
         UiNewDeckButton.setMinimumSize(new java.awt.Dimension(80, 20));
         UiNewDeckButton.setPreferredSize(new java.awt.Dimension(80, 20));
-        UiNewDeckButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UiNewDeckButtonMouseClicked(evt);
-            }
-        });
         UiNewDeckButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UiNewDeckButtonActionPerformed(evt);
@@ -513,59 +489,46 @@ public class UI extends javax.swing.JFrame {
         deck.setDeckName(NewDeckNameField.getText());
     }//GEN-LAST:event_NewDeckNameFieldActionPerformed
 
-    private void UiNewDeckButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UiNewDeckButtonMouseClicked
-        AddDeckNameWindow.setLocationRelativeTo(this);
-        AddDeckNameWindow.setTitle("Create a new deck");
-        AddDeckNameWindow.setVisible(true);
-    }//GEN-LAST:event_UiNewDeckButtonMouseClicked
-
-    private void NewDeckFieldOkButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonMouseClicked
-        deck.setDeckName(NewDeckNameField.getText());
-        handler.createFile(NewDeckNameField.getText());
-        
-        
-        AddDeckNameWindow.setVisible(false);
-        AddNewWordWindow.setLocationRelativeTo(this);
-        AddNewWordWindow.setTitle("Create new cards - " + deck.getDeckName());
-        AddNewWordWindow.setVisible(true);
-
-    }//GEN-LAST:event_NewDeckFieldOkButtonMouseClicked
-
     private void NewDeckFieldCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewDeckFieldCancelMouseClicked
         AddDeckNameWindow.setVisible(false);
     }//GEN-LAST:event_NewDeckFieldCancelMouseClicked
 
-    private void NewWordCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWordCancelButtonActionPerformed
+    private void NewWordDoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWordDoneButtonActionPerformed
         AddNewWordWindow.setVisible(false);
-    }//GEN-LAST:event_NewWordCancelButtonActionPerformed
+        UiUpdateListButton.doClick();
+    }//GEN-LAST:event_NewWordDoneButtonActionPerformed
 
     private void NewWordAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWordAddButtonActionPerformed
         Cards newCard = new Cards(NewWordField.getText(), NewTranslationField.getText());
         deck.add(newCard);
-        String temporary = NewWordField.getText() + ":" + NewTranslationField.getText() + ":";
-        handler.writeToFile(temporary);
-
+        String word = newCard.getWord();
+        String translation = newCard.getTranslation();
+        try {
+        handler.writeToFile(word, translation);
+        } catch (Exception e) {
+            System.out.println("NewWordAddButton(Translation) = ERROR");
+        }
         NewWordField.setText("");
         NewTranslationField.setText("");
     }//GEN-LAST:event_NewWordAddButtonActionPerformed
-
-    private void NewWordFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWordFieldActionPerformed
-    }//GEN-LAST:event_NewWordFieldActionPerformed
 
     private void UiCloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiCloseButtonActionPerformed
         System.exit(0);
     }//GEN-LAST:event_UiCloseButtonActionPerformed
 
     private void UiStartDrillingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiStartDrillingButtonActionPerformed
+        wordIndex = 0;
+        DrillShowAnswerLabel.setVisible(false);
+        DrillShowAnswerButton.setVisible(true);
+        
         DrillWindow.setLocationRelativeTo(this);
-        DrillWindow.setTitle("Practice");
+        DrillWindow.setTitle("Practice - " + jList.getSelectedValue().toString());
         DrillWindow.setVisible(true);
         DrillEvaluateCorrectButton.setVisible(false);
         DrillEvaluateIncorrectButton.setVisible(false);
         String selected = jList.getSelectedValue().toString();
-        System.out.println(selected);
         try {
-        words = handler.loadDeck(selected);
+        words = handler.loadFile(selected);
         } catch (Exception e) {
             System.out.println("UiStartDrillingButton = ERROR");
         }
@@ -579,6 +542,7 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_DrillEvaluateCorrectButtonActionPerformed
 
     private void DrillEvaluateIncorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateIncorrectButtonActionPerformed
+        ++wordIndex;
         stats.countToIncorrectAnswers();
         allCardsGonethroughCheck();
     }//GEN-LAST:event_DrillEvaluateIncorrectButtonActionPerformed
@@ -596,31 +560,26 @@ public class UI extends javax.swing.JFrame {
     private void UiTopMenuFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UiTopMenuFileMouseClicked
     }//GEN-LAST:event_UiTopMenuFileMouseClicked
 
-    private void FileChooserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FileChooserActionPerformed
-    }//GEN-LAST:event_FileChooserActionPerformed
-
     private void UiOpenFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiOpenFileButtonActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File openedfile = chooser.getSelectedFile();
         String openedfilename = openedfile.getName();
         handler.addOpenedFileToFileList(openedfilename, this.file);
-        
-            
-        
+        handler.addFile(openedfilename);
+        UiUpdateListButton.doClick();
     }//GEN-LAST:event_UiOpenFileButtonActionPerformed
 
     private void UiNewDeckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiNewDeckButtonActionPerformed
-        // TODO add your handling code here:
+        NewDeckNameField.setText("");
+        AddDeckNameWindow.setLocationRelativeTo(this);
+        AddDeckNameWindow.setTitle("Create a new deck");
+        AddDeckNameWindow.setVisible(true);
     }//GEN-LAST:event_UiNewDeckButtonActionPerformed
-
-    private void NewDeckFieldOkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NewDeckFieldOkButtonActionPerformed
 
     private void UiUpdateListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiUpdateListButtonActionPerformed
         try {
-            jList.setListData(handler.getFilesFromTextFile().toArray());
+            jList.setListData(handler.getExistingFiles().toArray());
         } catch (Exception e) {
             System.out.println("UiUpdateListButtonActionPerformed = ERROR");
         }
@@ -629,8 +588,23 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_UiUpdateListButtonActionPerformed
 
     private void UiDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiDeleteButtonActionPerformed
-        
+        handler.deleteFile(jList.getSelectedValue().toString());
+        UiUpdateListButton.doClick();
     }//GEN-LAST:event_UiDeleteButtonActionPerformed
+
+    private void NewDeckFieldOkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonActionPerformed
+        deck.setDeckName(NewDeckNameField.getText());
+        if (!deck.getDeckName().isEmpty()) {
+            handler.createFile(NewDeckNameField.getText());
+            AddDeckNameWindow.setVisible(false);
+            AddNewWordWindow.setLocationRelativeTo(this);
+            AddNewWordWindow.setTitle("Create new cards - " + deck.getDeckName());
+            AddNewWordWindow.setVisible(true);
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Invalid file name!", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_NewDeckFieldOkButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -670,8 +644,8 @@ public class UI extends javax.swing.JFrame {
                 Window.pack();
                 Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 Window.setVisible(true);
-
-
+                Window.UiUpdateListButton.doClick();
+                
 
 //                new UI().setVisible(true);
 
@@ -694,10 +668,9 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JTextField NewDeckNameField;
     private javax.swing.JTextField NewTranslationField;
     private javax.swing.JButton NewWordAddButton;
-    private javax.swing.JButton NewWordCancelButton;
+    private javax.swing.JButton NewWordDoneButton;
     private javax.swing.JTextField NewWordField;
     private javax.swing.JScrollPane ScrollPane;
-    private javax.swing.JLabel StatsShowDeckName;
     private javax.swing.JLabel StatsShowInformation;
     private javax.swing.JLabel StatsShowInformation2;
     private javax.swing.JDialog StatsWindow;
@@ -715,6 +688,7 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JList jList;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
@@ -736,7 +710,6 @@ public class UI extends javax.swing.JFrame {
             DrillWindow.setVisible(false);
             StatsWindow.pack();
             StatsWindow.setVisible(true);
-      /*      StatsShowDeckName.setText("Deck: " + ); EDIT*/
             StatsShowInformation.setText(stats.getTotalCorrectStats());
             StatsShowInformation2.setText(stats.getTotalIncorrectStats());
             wordIndex = 0;

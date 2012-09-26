@@ -10,11 +10,12 @@ import java.util.Scanner;
 
 public class HandleFiles {
 
-    private HashMap<String, File> fileList = new HashMap<String, File>();
+    private HashMap<String, File> fileList;
     private String fileName;
     private File file;
 
     public HandleFiles(File fileName, String name) {
+        this.fileList = new HashMap<String, File>();
         this.file = fileName;
         this.fileName = name;
     }
@@ -22,57 +23,126 @@ public class HandleFiles {
     public HandleFiles() {
     }
 
-    /***********SETTERS & GETTERS***********/
-    
+    /**
+     * Metodi asettaa tiedoston
+     *
+     * @return Tyhjä
+     */
     public void setFile(File file) {
         this.file = file;
     }
 
+    /**
+     * Metodi asettaa tiedoston nimeksi annetun nimen
+     *
+     * @return Tyhjä
+     */
     public void setFileName(String name) {
         this.fileName = name;
     }
 
-    public File getFile() {
-        return this.file;
-    }
-
-    public String getFileName() {
-        return fileName;
-    }
-
-    public File getFileFromFileList(String name) {
-        return fileList.get(name);
-    }
-
-    /***************HASH/ARRAY**************/
-    
+    /**
+     * Metodi lisää tiedoston listaan
+     *
+     * @return Tyhjä
+     */
     public void addFileToFileList() {
         this.fileList.put(fileName, file);
     }
 
-    public void deleteFileFromFileList(String name) {
-        this.fileList.remove(name);
-    }
-
+    /**
+     * Metodi lisää hakemistosta tiedoston listaan
+     *
+     * @return Tyhjä
+     */
     public void addOpenedFileToFileList(String name, File file) {
         this.fileList.put(name, file);
     }
 
-    /**************FILE HANDLING************/
-    
-    public ArrayList<String> loadDeck(String name) throws FileNotFoundException {
-        ArrayList<String> list = new ArrayList<String>();
-        
-        Scanner reader = new Scanner(new File("./Tiedostot/"+name));
-        
-        while (reader.hasNext()) {
-            list.add(reader.nextLine());
+    /**
+     * Metodi lisää uuden tiedoston listaan
+     *
+     * @return Tyhjä
+     */
+    public void addFile(String name) {
+        try {
+            ArrayList<String> temporary = getExistingFiles();
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/Tiedostolista"));
+
+            for (int i = 0; i < temporary.size(); i++) {
+                writer.println(temporary.get(i));
+            }
+            writer.print(name);
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("setFiletoTextFile = ERROR");
         }
-        reader.close();
-        return list;
     }
-    
-    public ArrayList<String> getFilesFromTextFile() throws FileNotFoundException, IOException {
+
+    /**
+     * Metodi luo uuden tiedoston annetulla nimellä
+     * 
+     * @return Tyhjä
+     */
+    public void createFile(String name) {
+        setFileName(name);
+        setFile(new File("./Tiedostot/" + name));
+        addFile(name);
+        try {
+            PrintWriter writer = new PrintWriter(this.file);
+            addFileToFileList();
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Could not create a file!");
+        }
+    }
+
+    /**
+     * Metodi poistaa tiedoston annetulla nimellä
+     * 
+     * @return Tyhjä
+     */
+    public void deleteFile(String name) {
+        try {
+            ArrayList<String> temporary = getExistingFiles();
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/Tiedostolista"));
+
+            for (int i = 0; i < temporary.size(); i++) {
+                if (!temporary.get(i).equals(name)) {
+                    writer.println(temporary.get(i));
+                }
+            }
+            writer.close();
+            File textfile = new File("./Tiedostot/" + name);
+            textfile.setWritable(true);
+            textfile.delete();
+        } catch (Exception e) {
+            System.out.println("deleteFileFromTextFile = ERROR");
+        }
+    }
+
+    /**
+     * Metodi tarkastaa onko tiedoston sisältö tyhjä
+     * 
+     * @return Boolean
+     */
+    public boolean fileIsEmpty(String name) {
+        Scanner reader = new Scanner("./Tiedostot/" + name);
+        if (reader.nextLine().isEmpty()) {
+            reader.close();
+            return true;
+        } else {
+            reader.close();
+            return false;
+        }
+    }
+
+    /**
+     * Metodi hakee kaikkien olemassa olevien tiedostojen nimet 
+     * 
+     * @return ArrayList<String>
+     */
+    public ArrayList<String> getExistingFiles() throws FileNotFoundException, IOException {
         ArrayList<String> list = new ArrayList<String>();
         Scanner reader = new Scanner(new File("./Tiedostot/Tiedostolista"));
 
@@ -83,50 +153,49 @@ public class HandleFiles {
         return list;
     }
 
-    private void setFileToTextFile(String newFileName) { // copy pastea
-        try {
-            ArrayList<String> temporary = getFilesFromTextFile();
-            PrintWriter writer = new PrintWriter(new File("./Tiedostot/Tiedostolista"));
-
-            for (int i = 0; i < temporary.size(); i++) {
-                writer.println(temporary.get(i));
-            }
-            writer.print(newFileName);
-            writer.close();
-        } catch (Exception e) {
-            System.out.println("setFiletoTextFile = ERROR");
-        }
-    }
-
-    public void writeToFile(String content) {
-        try {
-            String temporary = readFile(this.fileName);
-            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName));
-            writer.print(temporary);
-            writer.print(content);
-            writer.close();
-        } catch (Exception e) {
-            System.out.println("writeToFile = ERROR");
-        }
-    }
-
-    public String readFile(String name) throws FileNotFoundException {
+    /**
+     * Metodi lataa halutun tiedoston annetulla nimellä
+     * 
+     * @return ArrayList<String>
+     */
+    public ArrayList<String> loadFile(String name) throws FileNotFoundException {
+        ArrayList<String> list = new ArrayList<String>();
         Scanner reader = new Scanner(new File("./Tiedostot/" + name));
-        String text = reader.nextLine();
-        return text;
+
+        while (reader.hasNext()) {
+            list.add(reader.nextLine());
+        }
+        reader.close();
+        return list;
     }
 
-    public void createFile(String name) {
-        setFileName(name);
-        setFile(new File("./Tiedostot/" + name));
-        setFileToTextFile(name);
-        try {
-            PrintWriter writer = new PrintWriter(this.file);
-            writer.write(name + "=");
+    /**
+     * Metodi kirjoittaa sanan tiedostoon mikäli tiedosto on tyhjä.
+     * Mikäli tiedosto ei ole tyhjä, kirjoitetaan uusi sana vanhan 
+     * sisällönlisäksi.
+     * 
+     * @return Tyhjä
+     */
+    public void writeToFile(String word, String translation) throws FileNotFoundException {
+        if (fileIsEmpty(this.fileName) == false) {
+            ArrayList<String> temp = new ArrayList<String>();
+            Scanner reader = new Scanner(new File("./Tiedostot/" + this.fileName));
+            while (reader.hasNext()) {
+                String text = reader.nextLine();
+                temp.add(text);
+            }
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName));
+            for (int i = 0; i < temp.size(); i++) {
+                writer.println(temp.get(i));
+            }
+            writer.println(word);
             writer.close();
-            addFileToFileList();
-        } catch (Exception e) {
-            System.out.println("Could not create a file!");
+            reader.close();
+        } else {
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName));
+            writer.print(word);
+            writer.print(translation);
+            writer.close();
         }
     }
 }
