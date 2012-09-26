@@ -201,9 +201,10 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="DrillWindowProgressLabel" alignment="0" pref="340" max="32767" attributes="1"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="DrillWIndowSeparator" pref="330" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -220,7 +221,7 @@
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
                               <Component id="DrillShowAnswerButton" alignment="0" min="-2" pref="298" max="-2" attributes="1"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="DrillEvaluateCorrectButton" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <Component id="DrillEvaluateCorrectButton" min="-2" pref="140" max="-2" attributes="1"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="DrillEvaluateIncorrectButton" min="-2" pref="140" max="-2" attributes="0"/>
                               </Group>
@@ -247,7 +248,9 @@
                       <Component id="DrillEvaluateCorrectButton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                       <Component id="DrillEvaluateIncorrectButton" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="70" max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Component id="DrillWindowProgressLabel" min="-2" pref="28" max="-2" attributes="0"/>
+                  <EmptySpace pref="24" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -299,6 +302,8 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DrillShowAnswerButtonActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JLabel" name="DrillWindowProgressLabel">
+        </Component>
         <Menu class="javax.swing.JMenuBar" name="jMenuBar3">
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="jMenu5">
@@ -317,6 +322,8 @@
     </Container>
     <Container class="javax.swing.JDialog" name="StatsWindow">
       <Properties>
+        <Property name="title" type="java.lang.String" value="Stats"/>
+        <Property name="alwaysOnTop" type="boolean" value="true"/>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[250, 250]"/>
         </Property>
@@ -466,9 +473,12 @@
                       </Group>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="UiDeleteButton" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="UiEditButton" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="UiNewDeckButton" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="UiDeleteButton" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="UiEditButton" alignment="1" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Component id="UiNewDeckButton" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="UiUpdateListButton" min="-2" pref="100" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
@@ -480,14 +490,8 @@
                       <Component id="jSeparator1" pref="505" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Component id="UiUpdateListButton" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
-                      <Component id="UiOpenFileButton" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="UiCloseButton" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="UiOpenFileButton" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="UiCloseButton" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -509,16 +513,17 @@
                   </Group>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="UiStartDrillingButton" min="-2" pref="33" max="-2" attributes="1"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="UiStartDrillingButton" alignment="3" min="-2" pref="33" max="-2" attributes="1"/>
+                  <Component id="UiUpdateListButton" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Component id="jSeparator1" min="-2" pref="10" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="UiUpdateListButton" alignment="3" min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="UiCloseButton" alignment="3" min="-2" pref="30" max="-2" attributes="1"/>
-                  <Component id="UiOpenFileButton" alignment="3" min="-2" pref="30" max="-2" attributes="1"/>
-              </Group>
-              <EmptySpace pref="87" max="32767" attributes="0"/>
+              <Component id="UiOpenFileButton" min="-2" pref="30" max="-2" attributes="1"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="UiCloseButton" min="-2" pref="30" max="-2" attributes="1"/>
+              <EmptySpace pref="39" max="32767" attributes="0"/>
               <Component id="jSeparator6" min="-2" pref="14" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -575,7 +580,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="UiOpenFileButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Open"/>
+        <Property name="text" type="java.lang.String" value="Browse"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[80, 20]"/>
         </Property>
@@ -632,6 +637,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Edit"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="UiEditButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JSeparator" name="jSeparator6">
     </Component>

@@ -67,7 +67,7 @@ public class HandleFiles {
     public void addFile(String name) {
         try {
             ArrayList<String> temporary = getExistingFiles();
-            PrintWriter writer = new PrintWriter(new File("./Tiedostot/Tiedostolista"));
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/Tiedostolista.txt"));
 
             for (int i = 0; i < temporary.size(); i++) {
                 writer.println(temporary.get(i));
@@ -86,7 +86,7 @@ public class HandleFiles {
      */
     public void createFile(String name) {
         setFileName(name);
-        setFile(new File("./Tiedostot/" + name));
+        setFile(new File("./Tiedostot/" + name+".txt"));
         addFile(name);
         try {
             PrintWriter writer = new PrintWriter(this.file);
@@ -105,7 +105,7 @@ public class HandleFiles {
     public void deleteFile(String name) {
         try {
             ArrayList<String> temporary = getExistingFiles();
-            PrintWriter writer = new PrintWriter(new File("./Tiedostot/Tiedostolista"));
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/Tiedostolista.txt"));
 
             for (int i = 0; i < temporary.size(); i++) {
                 if (!temporary.get(i).equals(name)) {
@@ -113,7 +113,7 @@ public class HandleFiles {
                 }
             }
             writer.close();
-            File textfile = new File("./Tiedostot/" + name);
+            File textfile = new File("./Tiedostot/" + name+".txt");
             textfile.setWritable(true);
             textfile.delete();
         } catch (Exception e) {
@@ -127,7 +127,7 @@ public class HandleFiles {
      * @return Boolean
      */
     public boolean fileIsEmpty(String name) {
-        Scanner reader = new Scanner("./Tiedostot/" + name);
+        Scanner reader = new Scanner("./Tiedostot/" + name+".txt");
         if (reader.nextLine().isEmpty()) {
             reader.close();
             return true;
@@ -136,6 +136,7 @@ public class HandleFiles {
             return false;
         }
     }
+    
 
     /**
      * Metodi hakee kaikkien olemassa olevien tiedostojen nimet 
@@ -144,7 +145,7 @@ public class HandleFiles {
      */
     public ArrayList<String> getExistingFiles() throws FileNotFoundException, IOException {
         ArrayList<String> list = new ArrayList<String>();
-        Scanner reader = new Scanner(new File("./Tiedostot/Tiedostolista"));
+        Scanner reader = new Scanner(new File("./Tiedostot/Tiedostolista.txt"));
 
         while (reader.hasNext()) {
             list.add(reader.next());
@@ -153,6 +154,7 @@ public class HandleFiles {
         return list;
     }
 
+    
     /**
      * Metodi lataa halutun tiedoston annetulla nimellä
      * 
@@ -160,7 +162,7 @@ public class HandleFiles {
      */
     public ArrayList<String> loadFile(String name) throws FileNotFoundException {
         ArrayList<String> list = new ArrayList<String>();
-        Scanner reader = new Scanner(new File("./Tiedostot/" + name));
+        Scanner reader = new Scanner(new File("./Tiedostot/" + name+".txt"));
 
         while (reader.hasNext()) {
             list.add(reader.nextLine());
@@ -177,24 +179,25 @@ public class HandleFiles {
      * @return Tyhjä
      */
     public void writeToFile(String word, String translation) throws FileNotFoundException {
-        if (fileIsEmpty(this.fileName) == false) {
+        if (fileIsEmpty(this.fileName+".txt") == false) {
             ArrayList<String> temp = new ArrayList<String>();
-            Scanner reader = new Scanner(new File("./Tiedostot/" + this.fileName));
+            Scanner reader = new Scanner(new File("./Tiedostot/" + this.fileName+".txt"));
             while (reader.hasNext()) {
                 String text = reader.nextLine();
                 temp.add(text);
             }
-            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName));
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName+".txt"));
             for (int i = 0; i < temp.size(); i++) {
                 writer.println(temp.get(i));
             }
             writer.println(word);
+            writer.println(translation);
             writer.close();
             reader.close();
         } else {
-            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName));
-            writer.print(word);
-            writer.print(translation);
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName+".txt"));
+            writer.println(word);
+            writer.println(translation);
             writer.close();
         }
     }

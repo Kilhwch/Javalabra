@@ -38,6 +38,11 @@ public class Stats {
         return "Incorrects answers: ["
                 + incorrectAnswers + "]" + " (" + (100.0 - (countPercents() * 1)) + "%)";
     }
+    
+    public void reset() {
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+    }
 
     /**
      * Metodi kasvattaa oikeiden vastauksien määrää

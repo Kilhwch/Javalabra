@@ -25,6 +25,7 @@ public class Decks {
     public void setDeckName(String name) {
         this.deckName = name;
     }
+    
 
     /**
     * Metodi palauttaa pakan nimen
@@ -34,6 +35,10 @@ public class Decks {
     
     public String getDeckName() {
         return this.deckName;
+    }
+    
+    public int getCount() {
+        return this.count;
     }
     
     /**

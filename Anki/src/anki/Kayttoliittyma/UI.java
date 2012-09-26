@@ -7,7 +7,11 @@ import anki.Decks;
 import anki.HandleFiles;
 import anki.Stats;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -25,6 +29,7 @@ public class UI extends javax.swing.JFrame {
 
     /** Creates new form UI */
     public UI() {
+        
         initComponents();
     }
 
@@ -53,6 +58,7 @@ public class UI extends javax.swing.JFrame {
         DrillEvaluateCorrectButton = new javax.swing.JButton();
         DrillEvaluateIncorrectButton = new javax.swing.JButton();
         DrillShowAnswerButton = new javax.swing.JButton();
+        DrillWindowProgressLabel = new javax.swing.JLabel();
         jMenuBar3 = new javax.swing.JMenuBar();
         jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
@@ -216,9 +222,9 @@ public class UI extends javax.swing.JFrame {
         DrillWindow.setMinimumSize(new java.awt.Dimension(350, 469));
         DrillWindow.setResizable(false);
 
-        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24));
 
-        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24));
 
         DrillEvaluateCorrectButton.setText("Correct");
         DrillEvaluateCorrectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -258,6 +264,7 @@ public class UI extends javax.swing.JFrame {
             .addGroup(DrillWindowLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DrillWindowProgressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrillWindowLayout.createSequentialGroup()
                         .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                         .addContainerGap())
@@ -291,9 +298,13 @@ public class UI extends javax.swing.JFrame {
                 .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(DrillWindowProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
+        StatsWindow.setTitle("Stats");
+        StatsWindow.setAlwaysOnTop(true);
         StatsWindow.setMinimumSize(new java.awt.Dimension(250, 250));
         StatsWindow.setResizable(false);
 
@@ -301,7 +312,7 @@ public class UI extends javax.swing.JFrame {
 
         StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel5.setText("Results:");
 
         jMenu1.setText("File");
@@ -375,7 +386,7 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
-        UiOpenFileButton.setText("Open");
+        UiOpenFileButton.setText("Browse");
         UiOpenFileButton.setMaximumSize(new java.awt.Dimension(80, 20));
         UiOpenFileButton.setMinimumSize(new java.awt.Dimension(80, 20));
         UiOpenFileButton.setPreferredSize(new java.awt.Dimension(80, 20));
@@ -405,6 +416,11 @@ public class UI extends javax.swing.JFrame {
         });
 
         UiEditButton.setText("Edit");
+        UiEditButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UiEditButtonActionPerformed(evt);
+            }
+        });
 
         UiTopMenuFile.setText("File");
         UiTopMenuFile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -435,9 +451,11 @@ public class UI extends javax.swing.JFrame {
                             .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(UiDeleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UiEditButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(UiDeleteButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(UiEditButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(UiUpdateListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
@@ -445,13 +463,8 @@ public class UI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                         .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(UiUpdateListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(32, 32, 32)
-                        .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152))))
+                    .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -468,15 +481,16 @@ public class UI extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(UiDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UiUpdateListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UiUpdateListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
+                .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -499,17 +513,25 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_NewWordDoneButtonActionPerformed
 
     private void NewWordAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWordAddButtonActionPerformed
-        Cards newCard = new Cards(NewWordField.getText(), NewTranslationField.getText());
-        deck.add(newCard);
-        String word = newCard.getWord();
-        String translation = newCard.getTranslation();
-        try {
-        handler.writeToFile(word, translation);
-        } catch (Exception e) {
-            System.out.println("NewWordAddButton(Translation) = ERROR");
+        if (NewWordField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid input", "Error!", JOptionPane.ERROR_MESSAGE);
         }
-        NewWordField.setText("");
-        NewTranslationField.setText("");
+        else if (NewTranslationField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid input", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            Cards card = new Cards(NewWordField.getText(), NewTranslationField.getText());
+            deck.add(card);
+            String word = card.getWord();
+            String translation = card.getTranslation();
+            try {
+            handler.writeToFile(word, translation);
+            } catch (Exception e) {
+            System.out.println("NewWordAddButton(Translation) = ERROR");
+            }
+            NewWordField.setText("");
+            NewTranslationField.setText("");
+        }
     }//GEN-LAST:event_NewWordAddButtonActionPerformed
 
     private void UiCloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiCloseButtonActionPerformed
@@ -517,22 +539,25 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_UiCloseButtonActionPerformed
 
     private void UiStartDrillingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiStartDrillingButtonActionPerformed
-        wordIndex = 0;
-        DrillShowAnswerLabel.setVisible(false);
-        DrillShowAnswerButton.setVisible(true);
+        if (jList.getSelectedValue() != null) {
         
-        DrillWindow.setLocationRelativeTo(this);
-        DrillWindow.setTitle("Practice - " + jList.getSelectedValue().toString());
-        DrillWindow.setVisible(true);
-        DrillEvaluateCorrectButton.setVisible(false);
-        DrillEvaluateIncorrectButton.setVisible(false);
-        String selected = jList.getSelectedValue().toString();
-        try {
-        words = handler.loadFile(selected);
-        } catch (Exception e) {
-            System.out.println("UiStartDrillingButton = ERROR");
+            wordIndex = 0;
+            DrillShowAnswerLabel.setVisible(false);
+            DrillShowAnswerButton.setVisible(true);
+        
+            DrillWindow.setLocationRelativeTo(this);
+            DrillWindow.setTitle("Practice - " + jList.getSelectedValue().toString());
+            DrillWindow.setVisible(true);
+            DrillEvaluateCorrectButton.setVisible(false);
+            DrillEvaluateIncorrectButton.setVisible(false);
+            String selected = jList.getSelectedValue().toString();
+            try {
+            words = handler.loadFile(selected);
+            } catch (Exception e) {
+                System.out.println("UiStartDrillingButton = ERROR");
+            }
+            DrillShowWordLabel.setText(words.get(wordIndex));
         }
-        DrillShowWordLabel.setText(words.get(wordIndex));
     }//GEN-LAST:event_UiStartDrillingButtonActionPerformed
 
     private void DrillEvaluateCorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateCorrectButtonActionPerformed
@@ -548,7 +573,6 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_DrillEvaluateIncorrectButtonActionPerformed
 
     private void DrillShowAnswerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillShowAnswerButtonActionPerformed
-
         DrillShowAnswerButton.setVisible(false);
         DrillEvaluateCorrectButton.setVisible(true);
         DrillEvaluateIncorrectButton.setVisible(true);
@@ -564,10 +588,14 @@ public class UI extends javax.swing.JFrame {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File openedfile = chooser.getSelectedFile();
+        try {
         String openedfilename = openedfile.getName();
         handler.addOpenedFileToFileList(openedfilename, this.file);
         handler.addFile(openedfilename);
         UiUpdateListButton.doClick();
+        } catch (Exception e) {
+            
+        }
     }//GEN-LAST:event_UiOpenFileButtonActionPerformed
 
     private void UiNewDeckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiNewDeckButtonActionPerformed
@@ -588,8 +616,10 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_UiUpdateListButtonActionPerformed
 
     private void UiDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiDeleteButtonActionPerformed
+        if (jList.getSelectedValue() != null) {
         handler.deleteFile(jList.getSelectedValue().toString());
         UiUpdateListButton.doClick();
+        }
     }//GEN-LAST:event_UiDeleteButtonActionPerformed
 
     private void NewDeckFieldOkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonActionPerformed
@@ -606,9 +636,21 @@ public class UI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_NewDeckFieldOkButtonActionPerformed
 
+    private void UiEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiEditButtonActionPerformed
+        try {
+        ProcessBuilder pb = new ProcessBuilder("Notepad.exe", jList.getSelectedValue().toString());
+        pb.start();
+            System.out.println("notepad " + jList.getSelectedValue().toString());
+        } catch (IOException ex){
+            System.out.println("error");
+        }
+
+    }//GEN-LAST:event_UiEditButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -632,23 +674,28 @@ public class UI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
 
+            
             @Override
             public void run() {
-
+                File list = new File("./Tiedostot/Tiedostolista.txt");
+                if (!list.exists()) {
+                    try {
+                        list.createNewFile();
+                    } catch (IOException ex) {
+                        System.out.println("An error occurred with Tiedostolista");
+                    }
+                }
+                
                 UI Window = new UI();
                 Window.setTitle("Anki");
                 Window.pack();
                 Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 Window.setVisible(true);
                 Window.UiUpdateListButton.doClick();
-                
-
-//                new UI().setVisible(true);
-
             }
         });
     }
@@ -662,6 +709,7 @@ public class UI extends javax.swing.JFrame {
     private java.awt.Label DrillShowWordLabel;
     private javax.swing.JSeparator DrillWIndowSeparator;
     private javax.swing.JDialog DrillWindow;
+    private javax.swing.JLabel DrillWindowProgressLabel;
     private javax.swing.JFileChooser FileChooser;
     private javax.swing.JButton NewDeckFieldCancel;
     private javax.swing.JButton NewDeckFieldOkButton;
@@ -713,6 +761,7 @@ public class UI extends javax.swing.JFrame {
             StatsShowInformation.setText(stats.getTotalCorrectStats());
             StatsShowInformation2.setText(stats.getTotalIncorrectStats());
             wordIndex = 0;
+            stats.reset();
 
         } else {
            
