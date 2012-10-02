@@ -9,11 +9,10 @@ import anki.Stats;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 
@@ -25,6 +24,9 @@ public class UI extends javax.swing.JFrame {
     private Decks deck = new Decks();
     private Stats stats = new Stats();
     private int wordIndex = 0;
+    
+    
+    
     
 
     /** Creates new form UI */
@@ -60,8 +62,8 @@ public class UI extends javax.swing.JFrame {
         DrillShowAnswerButton = new javax.swing.JButton();
         DrillWindowProgressLabel = new javax.swing.JLabel();
         jMenuBar3 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenu6 = new javax.swing.JMenu();
+        jMenuFile = new javax.swing.JMenu();
+        jMenuEdit = new javax.swing.JMenu();
         StatsWindow = new javax.swing.JDialog();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
@@ -222,9 +224,11 @@ public class UI extends javax.swing.JFrame {
         DrillWindow.setMinimumSize(new java.awt.Dimension(350, 469));
         DrillWindow.setResizable(false);
 
-        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24));
+        DrillShowWordLabel.setAlignment(java.awt.Label.CENTER);
+        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
-        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24));
+        DrillShowAnswerLabel.setAlignment(java.awt.Label.CENTER);
+        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
 
         DrillEvaluateCorrectButton.setText("Correct");
         DrillEvaluateCorrectButton.addActionListener(new java.awt.event.ActionListener() {
@@ -249,11 +253,11 @@ public class UI extends javax.swing.JFrame {
             }
         });
 
-        jMenu5.setText("File");
-        jMenuBar3.add(jMenu5);
+        jMenuFile.setText("File");
+        jMenuBar3.add(jMenuFile);
 
-        jMenu6.setText("Edit");
-        jMenuBar3.add(jMenu6);
+        jMenuEdit.setText("Edit");
+        jMenuBar3.add(jMenuEdit);
 
         DrillWindow.setJMenuBar(jMenuBar3);
 
@@ -269,19 +273,18 @@ public class UI extends javax.swing.JFrame {
                         .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(DrillWindowLayout.createSequentialGroup()
-                        .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
-                        .addGap(27, 27, 27))
-                    .addGroup(DrillWindowLayout.createSequentialGroup()
                         .addComponent(DrillShowWordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                         .addGap(27, 27, 27))
-                    .addGroup(DrillWindowLayout.createSequentialGroup()
-                        .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DrillWindowLayout.createSequentialGroup()
-                                .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrillWindowLayout.createSequentialGroup()
+                        .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DrillWindowLayout.createSequentialGroup()
+                                    .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+                        .addGap(27, 27, 27))))
         );
         DrillWindowLayout.setVerticalGroup(
             DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -308,9 +311,9 @@ public class UI extends javax.swing.JFrame {
         StatsWindow.setMinimumSize(new java.awt.Dimension(250, 250));
         StatsWindow.setResizable(false);
 
-        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14));
 
-        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel5.setText("Results:");
@@ -637,6 +640,7 @@ public class UI extends javax.swing.JFrame {
     }//GEN-LAST:event_NewDeckFieldOkButtonActionPerformed
 
     private void UiEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiEditButtonActionPerformed
+        if (jList.getSelectedValue() != null) {
         try {
         ProcessBuilder pb = new ProcessBuilder("Notepad.exe", jList.getSelectedValue().toString());
         pb.start();
@@ -644,7 +648,7 @@ public class UI extends javax.swing.JFrame {
         } catch (IOException ex){
             System.out.println("error");
         }
-
+        }
     }//GEN-LAST:event_UiEditButtonActionPerformed
 
     /**
@@ -690,10 +694,24 @@ public class UI extends javax.swing.JFrame {
                     }
                 }
                 
+
+
+                
+                
                 UI Window = new UI();
                 Window.setTitle("Anki");
                 Window.pack();
                 Window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                
+                
+                JMenuBar menubar1 = new JMenuBar();
+                JMenuBar menubar2 = new JMenuBar();
+                JMenuItem quit = new JMenuItem("Quit");
+                JMenuItem delete = new JMenuItem("Delete");
+                menubar1.add(delete);
+                menubar2.add(quit);
+                jMenuEdit.add(menubar1);
+                jMenuFile.add(menubar2);
                 Window.setVisible(true);
                 Window.UiUpdateListButton.doClick();
             }
@@ -740,10 +758,10 @@ public class UI extends javax.swing.JFrame {
     private javax.swing.JList jList;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar3;
+    public static javax.swing.JMenu jMenuEdit;
+    public static javax.swing.JMenu jMenuFile;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
