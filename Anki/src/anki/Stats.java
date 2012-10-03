@@ -4,6 +4,7 @@ public class Stats {
 
     private int correctAnswers;
     private int incorrectAnswers;
+    private static int reviewedToday;
 
     public Stats() {
     }
@@ -71,5 +72,13 @@ public class Stats {
         double percent = ((correctAnswers / (double) getTotalAnswers()) * 100);
         percent = Math.round(percent * 100.0) / 100.0;
         return percent;
+    }
+
+    public static int getTotalToday() {
+        return reviewedToday;
+    }
+
+    public void saveToday(int reviewed) {
+        reviewedToday = reviewedToday + reviewed;
     }
 }

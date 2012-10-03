@@ -64,7 +64,7 @@ public class HandleFiles {
      *
      * @return Tyhjä
      */
-    public void addFile(String name) {
+    public String addFile(String name) {
         try {
             ArrayList<String> temporary = getExistingFiles();
             PrintWriter writer = new PrintWriter(new File("./Tiedostot/Tiedostolista.txt"));
@@ -77,6 +77,7 @@ public class HandleFiles {
         } catch (Exception e) {
             System.out.println("setFiletoTextFile = ERROR");
         }
+        return name;
     }
 
     /**
@@ -84,7 +85,8 @@ public class HandleFiles {
      * 
      * @return Tyhjä
      */
-    public void createFile(String name) {
+    public Boolean createFile(String name) {
+        if (fileExists(name) == false) {
         setFileName(name);
         setFile(new File("./Tiedostot/" + name+".txt"));
         addFile(name);
@@ -92,9 +94,13 @@ public class HandleFiles {
             PrintWriter writer = new PrintWriter(this.file);
             addFileToFileList();
             writer.close();
+            
         } catch (Exception e) {
             System.out.println("Could not create a file!");
+            return false;
         }
+        }
+        return true;
     }
 
     /**
@@ -135,6 +141,14 @@ public class HandleFiles {
             reader.close();
             return false;
         }
+    }
+    
+    public boolean fileExists(String name) {
+        File test = new File("./Tiedostot/" + name+".txt");
+        if (test.exists())
+            return true;
+        else
+            return false;
     }
     
 
