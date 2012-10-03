@@ -2,12 +2,18 @@ package anki;
 
 import java.util.ArrayList;
 
+
+/**
+* Hoitaa korttipakkojen toiminnallisuudet.
+*/
+
 public class Decks {
 
     private ArrayList<Cards> deck;
     private String deckName;
     private int count = 0;
 
+    
     public Decks() {
         deck = new ArrayList<Cards>();
     }
@@ -16,10 +22,9 @@ public class Decks {
         this.deck = new ArrayList<Cards>();
         this.deckName = name;
     }
+    
     /**
-    * Metodi asettaa pakan nimeksi annetun nimen
-    *
-    * @return Tyhjä
+    * Asettaa pakan nimeksi annetun nimen.
     */
     
     public void setDeckName(String name) {
@@ -28,7 +33,7 @@ public class Decks {
     
 
     /**
-    * Metodi palauttaa pakan nimen
+    * Palauttaa pakan nimen.
     *
     * @return String
     */
@@ -37,14 +42,17 @@ public class Decks {
         return this.deckName;
     }
     
+    /**
+    * Palauttaa korttien lukumäärän.
+    * 
+    * @return Integer
+    */
     public int getCount() {
         return this.count;
     }
     
     /**
-    * Metodi lisää kortin pakkaan
-    *
-    * @return String
+    * Lisää kortin pakkaan.
     */
 
     public void add(Cards card) {

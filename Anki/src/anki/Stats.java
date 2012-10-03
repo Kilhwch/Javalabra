@@ -1,16 +1,20 @@
 package anki;
 
+
+/**
+* Laskee tilastoja.
+*/
+
 public class Stats {
 
     private int correctAnswers;
     private int incorrectAnswers;
-    private static int reviewedToday;
-
+    
     public Stats() {
     }
 
     /**
-     * Metodi palauttaa kaikkien vastauksien kokonaismäärän
+     * Palauttaa kaikkien vastauksien kokonaismäärän.
      * 
      * @return Integer
      */
@@ -19,8 +23,8 @@ public class Stats {
     }
 
     /**
-     * Metodi palauttaa oikeiden vastauksien määrän
-     * ja prosentuaalisen arvon
+     * Palauttaa oikeiden vastauksien määrän
+     * ja prosentuaalisen arvon.
      * 
      * @return String
      */
@@ -30,8 +34,8 @@ public class Stats {
     }
 
     /**
-     * Metodi palauttaa väärien vastauksien määrän
-     * ja prosentuaalisen arvon
+     * Palauttaa väärien vastauksien määrän.
+     * ja prosentuaalisen arvon.
      * 
      * @return String
      */
@@ -40,31 +44,30 @@ public class Stats {
                 + incorrectAnswers + "]" + " (" + (100.0 - (countPercents() * 1)) + "%)";
     }
     
+     /**
+     * Nollaa oikeiden sekä väärien vastauksien arvot.
+     */
     public void reset() {
         correctAnswers = 0;
         incorrectAnswers = 0;
     }
 
     /**
-     * Metodi kasvattaa oikeiden vastauksien määrää
-     * 
-     * @return Tyhjä
+     * Kasvattaa oikeiden vastauksien määrää.
      */
     public void countToCorrectAnswers() {
         ++correctAnswers;
     }
 
     /**
-     * Metodi kasvattaa väärien vastauksien määrää
-     * 
-     * @return Tyhjä
+     * Kasvattaa väärien vastauksien määrää.
      */
     public void countToIncorrectAnswers() {
         ++incorrectAnswers;
     }
 
     /**
-     * Metodi laskee oikeiden vastauksien määrän prosentteina
+     * Laskee oikeiden vastauksien määrän prosentteina.
      * 
      * @return Double
      */
@@ -72,13 +75,5 @@ public class Stats {
         double percent = ((correctAnswers / (double) getTotalAnswers()) * 100);
         percent = Math.round(percent * 100.0) / 100.0;
         return percent;
-    }
-
-    public static int getTotalToday() {
-        return reviewedToday;
-    }
-
-    public void saveToday(int reviewed) {
-        reviewedToday = reviewedToday + reviewed;
     }
 }

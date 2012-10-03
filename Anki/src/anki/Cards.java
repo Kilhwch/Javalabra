@@ -1,18 +1,21 @@
 package anki;
 
+/**
+* Hoitaa korttien toiminnallisuudet.
+*/
 
 public class Cards {
 
     private String word;
     private String translation;
-
+    
     public Cards(String word, String translation) {
         this.word = word;
         this.translation = translation;
     }
     
     /**
-    * Metodi palauttaa sanan
+    * Palauttaa sanan.
     *
     * @return String
     */
@@ -22,7 +25,7 @@ public class Cards {
     }
     
     /**
-    * Metodi palauttaa käännöksen
+    * Palauttaa käännöksen.
     *
     * @return String
     */
