@@ -1,8 +1,5 @@
-﻿Tehdyt testit (läpi)
+﻿Tehdyt testit lyhyesti (läpi)
 ________________________________________________________________________
-
-
-Nappulat ja yleiset virheet:
 
 1.0 Nappulat (Delete, Start, Edit etc) deaktivoituvat jos valittu deck on null.
 1.1 Nappuloilla tai tyhjillä kentillä ylipäätänsä ei pitäisi saada aikaan virhetilanteita.
@@ -27,3 +24,11 @@ delete -nappi ei toimi vaan poistaa vain toisen arvon. (ks kohta 1.4)
 2.3 Muut mahdolliset bugit pääasiassa liittyvät käyttöliittymään. Ohjelma ei lukitse
 viimeisintä ikkunaa vaan antaa käyttäjän vapaasti käyttää kaikkia. Näin ollen esimerkiksi
 pakkaa editoidessa pakka voidaan samaan aikaan poistaa.
+
+________________________________________________________________________
+
+Miten testattu?
+
+Koska ohjelma oikeastaan perustuu pitkälti tiedostojen "hallinnointiin",
+kaikki napit on myös testattu niin että ohjelma on bootattu, jolloin
+varmistetaan että metodit toimivat oikein ja muuttujat pysyvät oikeina/nollautuu.
