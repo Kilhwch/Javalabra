@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 public class Decks {
 
+    private ArrayList<Decks> decklist = new ArrayList<Decks>();
     private ArrayList<Cards> deck;
     private String deckName;
     private int count = 0;
@@ -29,6 +30,7 @@ public class Decks {
     
     public void setDeckName(String name) {
         this.deckName = name;
+        this.decklist.add(this);
     }
     
 
@@ -59,4 +61,8 @@ public class Decks {
         deck.add(card);
         ++count;
     }
+
+//    public void delete(String name) {
+//        decklist.remove();
+//    }
 }

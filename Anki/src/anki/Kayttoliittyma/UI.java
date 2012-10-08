@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 public class UI extends javax.swing.JFrame implements Runnable {
 
@@ -42,9 +43,9 @@ public class UI extends javax.swing.JFrame implements Runnable {
                 this.setTitle("Anki");
                 this.pack();
                 this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                this.UiUpdateListButton.setVisible(false);
+                this.UIWindow_UpdateList.setVisible(false);
                 this.setVisible(true);
-                this.UiUpdateListButton.doClick();
+                this.UIWindow_UpdateList.doClick();
                 
     }
 
@@ -52,64 +53,79 @@ public class UI extends javax.swing.JFrame implements Runnable {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        AddNewWordWindow = new javax.swing.JDialog();
-        NewWordField = new javax.swing.JTextField();
-        NewTranslationField = new javax.swing.JTextField();
-        NewWordAddButton = new javax.swing.JButton();
+        NewCardWindow = new javax.swing.JDialog();
+        NewCardWindow_WordField = new javax.swing.JTextField();
+        NewCardWindow_TranslationField = new javax.swing.JTextField();
+        NewCardWindow_Add = new javax.swing.JButton();
+        NewCardWindow_Done = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        NewWordDoneButton = new javax.swing.JButton();
-        AddDeckNameWindow = new javax.swing.JDialog();
-        NewDeckNameField = new javax.swing.JTextField();
+        label2 = new java.awt.Label();
+        jSeparator9 = new javax.swing.JSeparator();
+        NewDeckWindow = new javax.swing.JDialog();
+        NewDeckWindow_NameField = new javax.swing.JTextField();
+        NewDeckWindow_OK = new javax.swing.JButton();
+        NewDeckWindow_Cancel = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        NewDeckFieldOkButton = new javax.swing.JButton();
-        NewDeckFieldCancel = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JSeparator();
+        label1 = new java.awt.Label();
         jSeparator5 = new javax.swing.JSeparator();
         DrillWindow = new javax.swing.JDialog();
-        DrillWIndowSeparator = new javax.swing.JSeparator();
+        DrillWindow_Correct = new javax.swing.JButton();
+        DrillWindow_Incorrect = new javax.swing.JButton();
+        DrillWindow_ShowAnswer = new javax.swing.JButton();
         DrillShowWordLabel = new java.awt.Label();
-        DrillShowAnswerLabel = new java.awt.Label();
-        DrillEvaluateCorrectButton = new javax.swing.JButton();
-        DrillEvaluateIncorrectButton = new javax.swing.JButton();
-        DrillShowAnswerButton = new javax.swing.JButton();
-        DrillWindowProgressLabel = new javax.swing.JLabel();
-        jMenuBar3 = new javax.swing.JMenuBar();
-        jMenuFile = new javax.swing.JMenu();
-        jMenuEdit = new javax.swing.JMenu();
+        DrillWindow_AnswerLabel = new java.awt.Label();
+        DrillWIndowSeparator = new javax.swing.JSeparator();
         StatsWindow = new javax.swing.JDialog();
+        StatsWindow_InfoLabel1 = new javax.swing.JLabel();
+        StatsWindow_InfoLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         jSeparator3 = new javax.swing.JSeparator();
-        StatsShowInformation = new javax.swing.JLabel();
-        StatsShowInformation2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         FileChooser = new javax.swing.JFileChooser();
-        UiNewDeckButton = new javax.swing.JButton();
-        UiCloseButton = new javax.swing.JButton();
-        UiStartDrillingButton = new javax.swing.JButton();
-        jSeparator1 = new javax.swing.JSeparator();
-        UiOpenFileButton = new javax.swing.JButton();
+        EditWindow = new javax.swing.JDialog();
+        EditWindow_NewCard = new javax.swing.JButton();
+        EditWindow_Delete = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator8 = new javax.swing.JSeparator();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        EditWindowTable = new javax.swing.JTable();
+        EditWindow_NewCardWindow = new javax.swing.JDialog();
+        EditWindow_NewCardWindow_Add = new javax.swing.JButton();
+        EditWindow_NewCardWindow_WordField = new javax.swing.JTextField();
+        EditWindow_NewCardWindow_TranslationField = new javax.swing.JTextField();
+        jSeparator4 = new javax.swing.JSeparator();
+        EditWindowAddWordLabel = new java.awt.Label();
+        label3 = new java.awt.Label();
+        label4 = new java.awt.Label();
+        UIWindow_NewDeck = new javax.swing.JButton();
+        UIWindow_Quit = new javax.swing.JButton();
+        UIWindow_Start = new javax.swing.JButton();
+        UIWindow_Browse = new javax.swing.JButton();
+        UIWindow_Delete = new javax.swing.JButton();
+        UIWindow_UpdateList = new javax.swing.JButton();
+        UIWindow_Edit = new javax.swing.JButton();
         ScrollPane = new javax.swing.JScrollPane();
         jList = new javax.swing.JList();
-        jLabel4 = new javax.swing.JLabel();
-        UiUpdateListButton = new javax.swing.JButton();
-        UiDeleteButton = new javax.swing.JButton();
-        UiEditButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
-        UiTopMenu = new javax.swing.JMenuBar();
-        UiTopMenuFile = new javax.swing.JMenu();
-        UiTopMenuEdit = new javax.swing.JMenu();
+        jLabel4 = new javax.swing.JLabel();
 
-        AddNewWordWindow.setMinimumSize(new java.awt.Dimension(230, 333));
-        AddNewWordWindow.setResizable(false);
+        NewCardWindow.setMinimumSize(new java.awt.Dimension(300, 400));
+        NewCardWindow.setResizable(false);
 
-        NewWordAddButton.setText("Add");
-        NewWordAddButton.addActionListener(new java.awt.event.ActionListener() {
+        NewCardWindow_Add.setText("Add");
+        NewCardWindow_Add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewWordAddButtonActionPerformed(evt);
+                NewCardWindow_AddActionPerformed(evt);
+            }
+        });
+
+        NewCardWindow_Done.setText("Done");
+        NewCardWindow_Done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewCardWindow_DoneActionPerformed(evt);
             }
         });
 
@@ -117,162 +133,166 @@ public class UI extends javax.swing.JFrame implements Runnable {
 
         jLabel2.setText("Word");
 
-        NewWordDoneButton.setText("Done");
-        NewWordDoneButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewWordDoneButtonActionPerformed(evt);
-            }
-        });
+        label2.setAlignment(java.awt.Label.CENTER);
+        label2.setFont(new java.awt.Font("Dialog", 1, 18));
+        label2.setText("New Card");
 
-        javax.swing.GroupLayout AddNewWordWindowLayout = new javax.swing.GroupLayout(AddNewWordWindow.getContentPane());
-        AddNewWordWindow.getContentPane().setLayout(AddNewWordWindowLayout);
-        AddNewWordWindowLayout.setHorizontalGroup(
-            AddNewWordWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddNewWordWindowLayout.createSequentialGroup()
-                .addGroup(AddNewWordWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddNewWordWindowLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(AddNewWordWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(NewWordField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NewTranslationField, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(NewWordAddButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)))
-                    .addGroup(AddNewWordWindowLayout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(jLabel2))
-                    .addGroup(AddNewWordWindowLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel1)))
-                .addContainerGap(25, Short.MAX_VALUE))
-            .addGroup(AddNewWordWindowLayout.createSequentialGroup()
+        javax.swing.GroupLayout NewCardWindowLayout = new javax.swing.GroupLayout(NewCardWindow.getContentPane());
+        NewCardWindow.getContentPane().setLayout(NewCardWindowLayout);
+        NewCardWindowLayout.setHorizontalGroup(
+            NewCardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewCardWindowLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(NewWordDoneButton, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
-                .addGap(25, 25, 25))
+                .addGroup(NewCardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(label2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, NewCardWindowLayout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(NewCardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(NewCardWindow_WordField, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NewCardWindow_TranslationField, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NewCardWindow_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(NewCardWindowLayout.createSequentialGroup()
+                                .addGap(83, 83, 83)
+                                .addComponent(jLabel2))
+                            .addGroup(NewCardWindowLayout.createSequentialGroup()
+                                .addGap(71, 71, 71)
+                                .addComponent(jLabel1))
+                            .addComponent(NewCardWindow_Done, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(41, 41, 41))
+                    .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
+                .addContainerGap())
         );
-        AddNewWordWindowLayout.setVerticalGroup(
-            AddNewWordWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddNewWordWindowLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
+        NewCardWindowLayout.setVerticalGroup(
+            NewCardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewCardWindowLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(label2, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NewWordField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NewCardWindow_WordField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NewTranslationField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NewCardWindow_TranslationField, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(NewWordAddButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NewCardWindow_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(NewWordDoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addComponent(NewCardWindow_Done, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
-        AddDeckNameWindow.setMinimumSize(new java.awt.Dimension(300, 300));
-        AddDeckNameWindow.setResizable(false);
+        NewDeckWindow.setMinimumSize(new java.awt.Dimension(300, 300));
+        NewDeckWindow.setResizable(false);
 
-        NewDeckNameField.addActionListener(new java.awt.event.ActionListener() {
+        NewDeckWindow_NameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewDeckNameFieldActionPerformed(evt);
+                NewDeckWindow_NameFieldActionPerformed(evt);
+            }
+        });
+
+        NewDeckWindow_OK.setText("OK");
+        NewDeckWindow_OK.setPreferredSize(new java.awt.Dimension(65, 23));
+        NewDeckWindow_OK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NewDeckWindow_OKActionPerformed(evt);
+            }
+        });
+
+        NewDeckWindow_Cancel.setText("Cancel");
+        NewDeckWindow_Cancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                NewDeckWindow_CancelMouseClicked(evt);
             }
         });
 
         jLabel3.setText("Please give your deck a name:");
 
-        NewDeckFieldOkButton.setText("OK");
-        NewDeckFieldOkButton.setPreferredSize(new java.awt.Dimension(65, 23));
-        NewDeckFieldOkButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NewDeckFieldOkButtonActionPerformed(evt);
-            }
-        });
+        label1.setAlignment(java.awt.Label.CENTER);
+        label1.setFont(new java.awt.Font("Dialog", 1, 18));
+        label1.setText("New Deck");
 
-        NewDeckFieldCancel.setText("Cancel");
-        NewDeckFieldCancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                NewDeckFieldCancelMouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout AddDeckNameWindowLayout = new javax.swing.GroupLayout(AddDeckNameWindow.getContentPane());
-        AddDeckNameWindow.getContentPane().setLayout(AddDeckNameWindowLayout);
-        AddDeckNameWindowLayout.setHorizontalGroup(
-            AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
-                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jSeparator5, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE))
-                    .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                        .addGap(55, 55, 55)
-                        .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                                .addComponent(NewDeckFieldOkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(NewDeckFieldCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(NewDeckNameField, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap())
+        javax.swing.GroupLayout NewDeckWindowLayout = new javax.swing.GroupLayout(NewDeckWindow.getContentPane());
+        NewDeckWindow.getContentPane().setLayout(NewDeckWindowLayout);
+        NewDeckWindowLayout.setHorizontalGroup(
+            NewDeckWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NewDeckWindowLayout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addGroup(NewDeckWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(NewDeckWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(NewDeckWindowLayout.createSequentialGroup()
+                            .addComponent(NewDeckWindow_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(NewDeckWindow_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(NewDeckWindow_NameField, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewDeckWindowLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 180, Short.MAX_VALUE)))
+                .addGap(79, 79, 79))
+            .addGroup(NewDeckWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(NewDeckWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(label1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jSeparator5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
-        AddDeckNameWindowLayout.setVerticalGroup(
-            AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(AddDeckNameWindowLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
+        NewDeckWindowLayout.setVerticalGroup(
+            NewDeckWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(NewDeckWindowLayout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addGap(18, 18, 18)
-                .addComponent(NewDeckNameField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(AddDeckNameWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NewDeckFieldOkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NewDeckFieldCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addComponent(NewDeckWindow_NameField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(NewDeckWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(NewDeckWindow_OK, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NewDeckWindow_Cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         DrillWindow.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         DrillWindow.setMinimumSize(new java.awt.Dimension(350, 469));
         DrillWindow.setResizable(false);
+        DrillWindow.addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                DrillWindowWindowClosed(evt);
+            }
+        });
+
+        DrillWindow_Correct.setText("Correct");
+        DrillWindow_Correct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DrillWindow_CorrectActionPerformed(evt);
+            }
+        });
+
+        DrillWindow_Incorrect.setText("Incorrect");
+        DrillWindow_Incorrect.setMinimumSize(new java.awt.Dimension(69, 23));
+        DrillWindow_Incorrect.setPreferredSize(new java.awt.Dimension(69, 23));
+        DrillWindow_Incorrect.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DrillWindow_IncorrectActionPerformed(evt);
+            }
+        });
+
+        DrillWindow_ShowAnswer.setText("Show Answer");
+        DrillWindow_ShowAnswer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DrillWindow_ShowAnswerActionPerformed(evt);
+            }
+        });
 
         DrillShowWordLabel.setAlignment(java.awt.Label.CENTER);
-        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        DrillShowWordLabel.setFont(new java.awt.Font("Dialog", 0, 24));
 
-        DrillShowAnswerLabel.setAlignment(java.awt.Label.CENTER);
-        DrillShowAnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-
-        DrillEvaluateCorrectButton.setText("Correct");
-        DrillEvaluateCorrectButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DrillEvaluateCorrectButtonActionPerformed(evt);
-            }
-        });
-
-        DrillEvaluateIncorrectButton.setText("Incorrect");
-        DrillEvaluateIncorrectButton.setMinimumSize(new java.awt.Dimension(69, 23));
-        DrillEvaluateIncorrectButton.setPreferredSize(new java.awt.Dimension(69, 23));
-        DrillEvaluateIncorrectButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DrillEvaluateIncorrectButtonActionPerformed(evt);
-            }
-        });
-
-        DrillShowAnswerButton.setText("Show Answer");
-        DrillShowAnswerButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DrillShowAnswerButtonActionPerformed(evt);
-            }
-        });
-
-        jMenuFile.setText("File");
-        jMenuBar3.add(jMenuFile);
-
-        jMenuEdit.setText("Edit");
-        jMenuBar3.add(jMenuEdit);
-
-        DrillWindow.setJMenuBar(jMenuBar3);
+        DrillWindow_AnswerLabel.setAlignment(java.awt.Label.CENTER);
+        DrillWindow_AnswerLabel.setFont(new java.awt.Font("Dialog", 0, 24));
 
         javax.swing.GroupLayout DrillWindowLayout = new javax.swing.GroupLayout(DrillWindow.getContentPane());
         DrillWindow.getContentPane().setLayout(DrillWindowLayout);
@@ -281,7 +301,6 @@ public class UI extends javax.swing.JFrame implements Runnable {
             .addGroup(DrillWindowLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DrillWindowProgressLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrillWindowLayout.createSequentialGroup()
                         .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
                         .addContainerGap())
@@ -291,12 +310,12 @@ public class UI extends javax.swing.JFrame implements Runnable {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DrillWindowLayout.createSequentialGroup()
                         .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(DrillWindow_ShowAnswer, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, DrillWindowLayout.createSequentialGroup()
-                                    .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DrillWindow_Correct, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(18, 18, 18)
-                                    .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
+                                    .addComponent(DrillWindow_Incorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(DrillWindow_AnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE))
                         .addGap(27, 27, 27))))
         );
         DrillWindowLayout.setVerticalGroup(
@@ -307,16 +326,14 @@ public class UI extends javax.swing.JFrame implements Runnable {
                 .addGap(69, 69, 69)
                 .addComponent(DrillWIndowSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(20, 20, 20)
-                .addComponent(DrillShowAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DrillWindow_AnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(DrillShowAnswerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DrillWindow_ShowAnswer, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DrillWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DrillEvaluateCorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DrillEvaluateIncorrectButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(DrillWindowProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(DrillWindow_Correct, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(DrillWindow_Incorrect, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(91, Short.MAX_VALUE))
         );
 
         StatsWindow.setTitle("Stats");
@@ -324,20 +341,12 @@ public class UI extends javax.swing.JFrame implements Runnable {
         StatsWindow.setMinimumSize(new java.awt.Dimension(250, 250));
         StatsWindow.setResizable(false);
 
-        StatsShowInformation.setFont(new java.awt.Font("Tahoma", 0, 14));
+        StatsWindow_InfoLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        StatsShowInformation2.setFont(new java.awt.Font("Tahoma", 0, 14));
+        StatsWindow_InfoLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setText("Results:");
-
-        jMenu1.setText("File");
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
-
-        StatsWindow.setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout StatsWindowLayout = new javax.swing.GroupLayout(StatsWindow.getContentPane());
         StatsWindow.getContentPane().setLayout(StatsWindowLayout);
@@ -346,8 +355,8 @@ public class UI extends javax.swing.JFrame implements Runnable {
             .addGroup(StatsWindowLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(StatsWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(StatsShowInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StatsWindow_InfoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StatsWindow_InfoLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jSeparator3, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -361,12 +370,175 @@ public class UI extends javax.swing.JFrame implements Runnable {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(StatsShowInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(StatsWindow_InfoLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(StatsShowInformation2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(StatsWindow_InfoLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(52, 52, 52)
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
+        );
+
+        EditWindow.setAlwaysOnTop(true);
+        EditWindow.setMinimumSize(new java.awt.Dimension(450, 480));
+        EditWindow.setResizable(false);
+
+        EditWindow_NewCard.setText("New Card");
+        EditWindow_NewCard.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditWindow_NewCardActionPerformed(evt);
+            }
+        });
+
+        EditWindow_Delete.setText("Delete");
+        EditWindow_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditWindow_DeleteActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18));
+        jLabel6.setText("Cards");
+
+        EditWindowTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Word", "Translation"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        EditWindowTable.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(EditWindowTable);
+        EditWindowTable.getColumnModel().getColumn(0).setResizable(false);
+        EditWindowTable.getColumnModel().getColumn(1).setResizable(false);
+
+        javax.swing.GroupLayout EditWindowLayout = new javax.swing.GroupLayout(EditWindow.getContentPane());
+        EditWindow.getContentPane().setLayout(EditWindowLayout);
+        EditWindowLayout.setHorizontalGroup(
+            EditWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(EditWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                    .addGroup(EditWindowLayout.createSequentialGroup()
+                        .addComponent(EditWindow_NewCard, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(EditWindow_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
+        );
+        EditWindowLayout.setVerticalGroup(
+            EditWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addGap(11, 11, 11)
+                .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(EditWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(EditWindow_NewCard, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditWindow_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62))
+        );
+
+        EditWindow_NewCardWindow.setAlwaysOnTop(true);
+        EditWindow_NewCardWindow.setMinimumSize(new java.awt.Dimension(400, 400));
+        EditWindow_NewCardWindow.setResizable(false);
+
+        EditWindow_NewCardWindow_Add.setText("Add");
+        EditWindow_NewCardWindow_Add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditWindow_NewCardWindow_AddActionPerformed(evt);
+            }
+        });
+
+        EditWindowAddWordLabel.setAlignment(java.awt.Label.CENTER);
+        EditWindowAddWordLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        EditWindowAddWordLabel.setText("New Card");
+
+        label3.setAlignment(java.awt.Label.CENTER);
+        label3.setText("Word");
+
+        label4.setAlignment(java.awt.Label.CENTER);
+        label4.setText("Translation");
+
+        javax.swing.GroupLayout EditWindow_NewCardWindowLayout = new javax.swing.GroupLayout(EditWindow_NewCardWindow.getContentPane());
+        EditWindow_NewCardWindow.getContentPane().setLayout(EditWindow_NewCardWindowLayout);
+        EditWindow_NewCardWindowLayout.setHorizontalGroup(
+            EditWindow_NewCardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditWindow_NewCardWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator4, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(EditWindow_NewCardWindowLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(EditWindowAddWordLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(EditWindow_NewCardWindowLayout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addGroup(EditWindow_NewCardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(EditWindow_NewCardWindowLayout.createSequentialGroup()
+                        .addGroup(EditWindow_NewCardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(label3, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                            .addComponent(EditWindow_NewCardWindow_WordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EditWindow_NewCardWindow_TranslationField, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(106, 106, 106))
+                    .addGroup(EditWindow_NewCardWindowLayout.createSequentialGroup()
+                        .addComponent(EditWindow_NewCardWindow_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
+        );
+        EditWindow_NewCardWindowLayout.setVerticalGroup(
+            EditWindow_NewCardWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(EditWindow_NewCardWindowLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(EditWindowAddWordLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addComponent(jSeparator4, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(EditWindow_NewCardWindow_WordField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(EditWindow_NewCardWindow_TranslationField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(EditWindow_NewCardWindow_Add, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(101, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -374,41 +546,62 @@ public class UI extends javax.swing.JFrame implements Runnable {
         setMinimumSize(new java.awt.Dimension(400, 300));
         setResizable(false);
 
-        UiNewDeckButton.setText("New Deck");
-        UiNewDeckButton.setMaximumSize(new java.awt.Dimension(80, 20));
-        UiNewDeckButton.setMinimumSize(new java.awt.Dimension(80, 20));
-        UiNewDeckButton.setPreferredSize(new java.awt.Dimension(80, 20));
-        UiNewDeckButton.addActionListener(new java.awt.event.ActionListener() {
+        UIWindow_NewDeck.setText("New Deck");
+        UIWindow_NewDeck.setMaximumSize(new java.awt.Dimension(80, 20));
+        UIWindow_NewDeck.setMinimumSize(new java.awt.Dimension(80, 20));
+        UIWindow_NewDeck.setPreferredSize(new java.awt.Dimension(80, 20));
+        UIWindow_NewDeck.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UiNewDeckButtonActionPerformed(evt);
+                UIWindow_NewDeckActionPerformed(evt);
             }
         });
 
-        UiCloseButton.setText("Quit");
-        UiCloseButton.setMaximumSize(new java.awt.Dimension(80, 20));
-        UiCloseButton.setMinimumSize(new java.awt.Dimension(80, 20));
-        UiCloseButton.setPreferredSize(new java.awt.Dimension(80, 20));
-        UiCloseButton.addActionListener(new java.awt.event.ActionListener() {
+        UIWindow_Quit.setText("Quit");
+        UIWindow_Quit.setMaximumSize(new java.awt.Dimension(80, 20));
+        UIWindow_Quit.setMinimumSize(new java.awt.Dimension(80, 20));
+        UIWindow_Quit.setPreferredSize(new java.awt.Dimension(80, 20));
+        UIWindow_Quit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UiCloseButtonActionPerformed(evt);
+                UIWindow_QuitActionPerformed(evt);
             }
         });
 
-        UiStartDrillingButton.setText("Start");
-        UiStartDrillingButton.setPreferredSize(new java.awt.Dimension(79, 23));
-        UiStartDrillingButton.addActionListener(new java.awt.event.ActionListener() {
+        UIWindow_Start.setText("Start");
+        UIWindow_Start.setPreferredSize(new java.awt.Dimension(79, 23));
+        UIWindow_Start.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UiStartDrillingButtonActionPerformed(evt);
+                UIWindow_StartActionPerformed(evt);
             }
         });
 
-        UiOpenFileButton.setText("Browse");
-        UiOpenFileButton.setMaximumSize(new java.awt.Dimension(80, 20));
-        UiOpenFileButton.setMinimumSize(new java.awt.Dimension(80, 20));
-        UiOpenFileButton.setPreferredSize(new java.awt.Dimension(80, 20));
-        UiOpenFileButton.addActionListener(new java.awt.event.ActionListener() {
+        UIWindow_Browse.setText("Browse");
+        UIWindow_Browse.setMaximumSize(new java.awt.Dimension(80, 20));
+        UIWindow_Browse.setMinimumSize(new java.awt.Dimension(80, 20));
+        UIWindow_Browse.setPreferredSize(new java.awt.Dimension(80, 20));
+        UIWindow_Browse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UiOpenFileButtonActionPerformed(evt);
+                UIWindow_BrowseActionPerformed(evt);
+            }
+        });
+
+        UIWindow_Delete.setText("Delete");
+        UIWindow_Delete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UIWindow_DeleteActionPerformed(evt);
+            }
+        });
+
+        UIWindow_UpdateList.setText("Update List");
+        UIWindow_UpdateList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UIWindow_UpdateListActionPerformed(evt);
+            }
+        });
+
+        UIWindow_Edit.setText("Edit");
+        UIWindow_Edit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UIWindow_EditActionPerformed(evt);
             }
         });
 
@@ -417,40 +610,6 @@ public class UI extends javax.swing.JFrame implements Runnable {
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setText("Decks");
-
-        UiUpdateListButton.setText("Update List");
-        UiUpdateListButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UiUpdateListButtonActionPerformed(evt);
-            }
-        });
-
-        UiDeleteButton.setText("Delete");
-        UiDeleteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UiDeleteButtonActionPerformed(evt);
-            }
-        });
-
-        UiEditButton.setText("Edit");
-        UiEditButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UiEditButtonActionPerformed(evt);
-            }
-        });
-
-        UiTopMenuFile.setText("File");
-        UiTopMenuFile.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                UiTopMenuFileMouseClicked(evt);
-            }
-        });
-        UiTopMenu.add(UiTopMenuFile);
-
-        UiTopMenuEdit.setText("Edit");
-        UiTopMenu.add(UiTopMenuEdit);
-
-        setJMenuBar(UiTopMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -463,18 +622,11 @@ public class UI extends javax.swing.JFrame implements Runnable {
                         .addComponent(ScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UiEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UiDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())))
+                            .addComponent(UIWindow_NewDeck, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UIWindow_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UIWindow_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UIWindow_Browse, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addContainerGap(460, Short.MAX_VALUE))
@@ -485,11 +637,11 @@ public class UI extends javax.swing.JFrame implements Runnable {
                         .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                        .addComponent(UIWindow_Start, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UIWindow_Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
-                    .addComponent(UiUpdateListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(UIWindow_UpdateList, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -501,80 +653,80 @@ public class UI extends javax.swing.JFrame implements Runnable {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(UiNewDeckButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UIWindow_NewDeck, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(UiEditButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UIWindow_Edit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(UiDeleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(UIWindow_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(UiOpenFileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(UIWindow_Browse, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(ScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UiStartDrillingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UiCloseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UIWindow_Start, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(UIWindow_Quit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(UiUpdateListButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addComponent(UIWindow_UpdateList, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(88, Short.MAX_VALUE))
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-541)/2, (screenSize.height-470)/2, 541, 470);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NewDeckNameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckNameFieldActionPerformed
-        deck.setDeckName(NewDeckNameField.getText());
-    }//GEN-LAST:event_NewDeckNameFieldActionPerformed
+    private void NewDeckWindow_NameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckWindow_NameFieldActionPerformed
+        deck.setDeckName(NewDeckWindow_NameField.getText());
+    }//GEN-LAST:event_NewDeckWindow_NameFieldActionPerformed
 
-    private void NewDeckFieldCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewDeckFieldCancelMouseClicked
-        AddDeckNameWindow.setVisible(false);
-    }//GEN-LAST:event_NewDeckFieldCancelMouseClicked
+    private void NewDeckWindow_CancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NewDeckWindow_CancelMouseClicked
+        NewDeckWindow.setVisible(false);
+    }//GEN-LAST:event_NewDeckWindow_CancelMouseClicked
 
-    private void NewWordDoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWordDoneButtonActionPerformed
-        AddNewWordWindow.setVisible(false);
-        UiUpdateListButton.doClick();
-    }//GEN-LAST:event_NewWordDoneButtonActionPerformed
+    private void NewCardWindow_DoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewCardWindow_DoneActionPerformed
+        NewCardWindow.setVisible(false);
+        UIWindow_UpdateList.doClick();
+    }//GEN-LAST:event_NewCardWindow_DoneActionPerformed
 
-    private void NewWordAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewWordAddButtonActionPerformed
-        if (NewWordField.getText().isEmpty()) {
+    private void NewCardWindow_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewCardWindow_AddActionPerformed
+        if (NewCardWindow_WordField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Invalid input", "Error!", JOptionPane.ERROR_MESSAGE);
         }
-        else if (NewTranslationField.getText().isEmpty()) {
+        else if (NewCardWindow_TranslationField.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Invalid input", "Error!", JOptionPane.ERROR_MESSAGE);
         }
         else {
-            Cards card = new Cards(NewWordField.getText(), NewTranslationField.getText());
+            Cards card = new Cards(NewCardWindow_WordField.getText(), NewCardWindow_TranslationField.getText());
             deck.add(card);
             String word = card.getWord();
             String translation = card.getTranslation();
             try {
-            handler.writeToFile(word, translation);
+            handler.writeToFile(deck.getDeckName(), word, translation);
             } catch (Exception e) {
             System.out.println("NewWordAddButton(Translation) = ERROR");
             }
-            NewWordField.setText("");
-            NewTranslationField.setText("");
+            NewCardWindow_WordField.setText("");
+            NewCardWindow_TranslationField.setText("");
         }
-    }//GEN-LAST:event_NewWordAddButtonActionPerformed
+    }//GEN-LAST:event_NewCardWindow_AddActionPerformed
 
-    private void UiCloseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiCloseButtonActionPerformed
+    private void UIWindow_QuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_QuitActionPerformed
         System.exit(0);
-    }//GEN-LAST:event_UiCloseButtonActionPerformed
+    }//GEN-LAST:event_UIWindow_QuitActionPerformed
 
-    private void UiStartDrillingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiStartDrillingButtonActionPerformed
+    private void UIWindow_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_StartActionPerformed
         if (jList.getSelectedValue() != null) {
         
             wordIndex = 0;
-            DrillShowAnswerLabel.setVisible(false);
-            DrillShowAnswerButton.setVisible(true);
+            DrillWindow_AnswerLabel.setVisible(false);
+            DrillWindow_ShowAnswer.setVisible(true);
         
             DrillWindow.setLocationRelativeTo(this);
             DrillWindow.setTitle("Practice - " + jList.getSelectedValue().toString());
             DrillWindow.setVisible(true);
-            DrillEvaluateCorrectButton.setVisible(false);
-            DrillEvaluateIncorrectButton.setVisible(false);
+            DrillWindow_Correct.setVisible(false);
+            DrillWindow_Incorrect.setVisible(false);
             String selected = jList.getSelectedValue().toString();
             try {
             words = handler.loadFile(selected);
@@ -583,54 +735,52 @@ public class UI extends javax.swing.JFrame implements Runnable {
             }
             DrillShowWordLabel.setText(words.get(wordIndex));
         }
-    }//GEN-LAST:event_UiStartDrillingButtonActionPerformed
+    }//GEN-LAST:event_UIWindow_StartActionPerformed
 
-    private void DrillEvaluateCorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateCorrectButtonActionPerformed
+    private void DrillWindow_CorrectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillWindow_CorrectActionPerformed
         ++wordIndex;
         stats.countToCorrectAnswers();
         allCardsGonethroughCheck();
-    }//GEN-LAST:event_DrillEvaluateCorrectButtonActionPerformed
+    }//GEN-LAST:event_DrillWindow_CorrectActionPerformed
 
-    private void DrillEvaluateIncorrectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillEvaluateIncorrectButtonActionPerformed
+    private void DrillWindow_IncorrectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillWindow_IncorrectActionPerformed
         ++wordIndex;
         stats.countToIncorrectAnswers();
         allCardsGonethroughCheck();
-    }//GEN-LAST:event_DrillEvaluateIncorrectButtonActionPerformed
+    }//GEN-LAST:event_DrillWindow_IncorrectActionPerformed
 
-    private void DrillShowAnswerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillShowAnswerButtonActionPerformed
-        DrillShowAnswerButton.setVisible(false);
-        DrillEvaluateCorrectButton.setVisible(true);
-        DrillEvaluateIncorrectButton.setVisible(true);
-        DrillShowAnswerLabel.setVisible(true);
-        DrillShowAnswerLabel.setText(words.get(wordIndex+1));
+    private void DrillWindow_ShowAnswerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DrillWindow_ShowAnswerActionPerformed
+        DrillWindow_ShowAnswer.setVisible(false);
+        DrillWindow_Correct.setVisible(true);
+        DrillWindow_Incorrect.setVisible(true);
+        DrillWindow_AnswerLabel.setVisible(true);
+        DrillWindow_AnswerLabel.setText(words.get(wordIndex+1));
         ++wordIndex;
-    }//GEN-LAST:event_DrillShowAnswerButtonActionPerformed
+    }//GEN-LAST:event_DrillWindow_ShowAnswerActionPerformed
 
-    private void UiTopMenuFileMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UiTopMenuFileMouseClicked
-    }//GEN-LAST:event_UiTopMenuFileMouseClicked
-
-    private void UiOpenFileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiOpenFileButtonActionPerformed
+    private void UIWindow_BrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_BrowseActionPerformed
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File openedfile = chooser.getSelectedFile();
         try {
         String openedfilename = openedfile.getName();
-        handler.addOpenedFileToFileList(openedfilename, this.file);
-        handler.addFile(openedfilename);
-        UiUpdateListButton.doClick();
+        String newname = openedfilename.replace(".txt", "");
+        System.out.println(newname);
+        handler.addFile(newname);
+        UIWindow_UpdateList.doClick();
         } catch (Exception e) {
-            
+            System.out.println("UI OPEN ERROR");
         }
-    }//GEN-LAST:event_UiOpenFileButtonActionPerformed
+    }//GEN-LAST:event_UIWindow_BrowseActionPerformed
 
-    private void UiNewDeckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiNewDeckButtonActionPerformed
-        NewDeckNameField.setText("");
-        AddDeckNameWindow.setLocationRelativeTo(this);
-        AddDeckNameWindow.setTitle("Create a new deck");
-        AddDeckNameWindow.setVisible(true);
-    }//GEN-LAST:event_UiNewDeckButtonActionPerformed
+    private void UIWindow_NewDeckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_NewDeckActionPerformed
+        NewDeckWindow_NameField.setText("");
+        NewDeckWindow.setLocationRelativeTo(this);
+        NewDeckWindow.setTitle("Create decks");
+        NewDeckWindow.setVisible(true);
+    }//GEN-LAST:event_UIWindow_NewDeckActionPerformed
 
-    private void UiUpdateListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiUpdateListButtonActionPerformed
+    private void UIWindow_UpdateListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_UpdateListActionPerformed
         try {
             jList.setListData(handler.getExistingFiles().toArray());
         } catch (Exception e) {
@@ -638,40 +788,88 @@ public class UI extends javax.swing.JFrame implements Runnable {
         }
         jList.setSelectedIndex(0);
         jList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    }//GEN-LAST:event_UiUpdateListButtonActionPerformed
+    }//GEN-LAST:event_UIWindow_UpdateListActionPerformed
 
-    private void UiDeleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiDeleteButtonActionPerformed
+    private void UIWindow_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_DeleteActionPerformed
         if (jList.getSelectedValue() != null) {
         handler.deleteFile(jList.getSelectedValue().toString());
-        UiUpdateListButton.doClick();
+        UIWindow_UpdateList.doClick();
         }
-    }//GEN-LAST:event_UiDeleteButtonActionPerformed
+    }//GEN-LAST:event_UIWindow_DeleteActionPerformed
 
-    private void NewDeckFieldOkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckFieldOkButtonActionPerformed
-        deck.setDeckName(NewDeckNameField.getText());
+    private void NewDeckWindow_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckWindow_OKActionPerformed
+        deck.setDeckName(NewDeckWindow_NameField.getText());
         if (!deck.getDeckName().isEmpty()) {
-            handler.createFile(NewDeckNameField.getText());
-            AddDeckNameWindow.setVisible(false);
-            AddNewWordWindow.setLocationRelativeTo(this);
-            AddNewWordWindow.setTitle("Create new cards - " + deck.getDeckName());
-            AddNewWordWindow.setVisible(true);
+            handler.createFile(NewDeckWindow_NameField.getText());
+            NewDeckWindow.setVisible(false);
+            NewCardWindow.setLocationRelativeTo(this);
+            NewCardWindow.setTitle("Create new cards - " + deck.getDeckName());
+            NewCardWindow.setVisible(true);
         }
         else {
             JOptionPane.showMessageDialog(this, "Invalid file name!", "Error!", JOptionPane.ERROR_MESSAGE);
         }
-    }//GEN-LAST:event_NewDeckFieldOkButtonActionPerformed
+    }//GEN-LAST:event_NewDeckWindow_OKActionPerformed
 
-    private void UiEditButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UiEditButtonActionPerformed
+    private void UIWindow_EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_EditActionPerformed
         if (jList.getSelectedValue() != null) {
+        EditWindow.setLocationRelativeTo(this);
+        EditWindow.setTitle(jList.getSelectedValue().toString());
+        EditWindow.setVisible(true);
+        getTableContent();
+        }
+    }//GEN-LAST:event_UIWindow_EditActionPerformed
+
+    private void EditWindow_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditWindow_DeleteActionPerformed
+
         try {
-        ProcessBuilder pb = new ProcessBuilder("Notepad.exe", jList.getSelectedValue().toString());
-        pb.start();
-            System.out.println("notepad " + jList.getSelectedValue().toString());
-        } catch (IOException ex){
-            System.out.println("error");
+        DefaultTableModel model = (DefaultTableModel) this.EditWindowTable.getModel();
+        int row = EditWindowTable.getSelectedRow();
+        int column = EditWindowTable.getSelectedColumn();
+        
+        String word = (String) EditWindowTable.getModel().getValueAt(row, column);
+        String translation = (String) EditWindowTable.getModel().getValueAt(row, 1);
+        try {
+        handler.deleteWord(EditWindow.getTitle(), word, translation);
+        } catch (Exception e) {
+            System.out.println("EditWindowDeleteButton = ERROR");
         }
+        model.removeRow(row);
+        } catch (Exception e) {
+            System.out.println("Cant delete Empty (Edit Window Delete Button)");
         }
-    }//GEN-LAST:event_UiEditButtonActionPerformed
+        
+    }//GEN-LAST:event_EditWindow_DeleteActionPerformed
+
+    private void EditWindow_NewCardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditWindow_NewCardActionPerformed
+        EditWindow_NewCardWindow.setVisible(true);
+        EditWindow_NewCardWindow.setLocationRelativeTo(this);
+        EditWindow_NewCardWindow.setTitle(jList.getSelectedValue().toString());
+    }//GEN-LAST:event_EditWindow_NewCardActionPerformed
+
+    private void EditWindow_NewCardWindow_AddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditWindow_NewCardWindow_AddActionPerformed
+        if (EditWindow_NewCardWindow_WordField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid input", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else if (EditWindow_NewCardWindow_TranslationField.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Invalid input", "Error!", JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            try {
+            handler.writeToFile(jList.getSelectedValue().toString(), EditWindow_NewCardWindow_WordField.getText(), EditWindow_NewCardWindow_TranslationField.getText());
+            } catch (Exception e) {
+            System.out.println("NewWordAddButton(Translation) = ERROR");
+            }
+        }
+        EditWindow_NewCardWindow_WordField.setText("");
+        EditWindow_NewCardWindow_TranslationField.setText("");
+        EditWindow_NewCardWindow.setVisible(false);
+        getTableContent();
+    }//GEN-LAST:event_EditWindow_NewCardWindow_AddActionPerformed
+
+    private void DrillWindowWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_DrillWindowWindowClosed
+        stats.reset();
+    }//GEN-LAST:event_DrillWindowWindowClosed
 
     /**
      * @param args the command line arguments
@@ -708,56 +906,64 @@ public class UI extends javax.swing.JFrame implements Runnable {
         
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDialog AddDeckNameWindow;
-    private javax.swing.JDialog AddNewWordWindow;
-    private javax.swing.JButton DrillEvaluateCorrectButton;
-    private javax.swing.JButton DrillEvaluateIncorrectButton;
-    private javax.swing.JButton DrillShowAnswerButton;
-    private java.awt.Label DrillShowAnswerLabel;
     private java.awt.Label DrillShowWordLabel;
     private javax.swing.JSeparator DrillWIndowSeparator;
     private javax.swing.JDialog DrillWindow;
-    private javax.swing.JLabel DrillWindowProgressLabel;
+    private java.awt.Label DrillWindow_AnswerLabel;
+    private javax.swing.JButton DrillWindow_Correct;
+    private javax.swing.JButton DrillWindow_Incorrect;
+    private javax.swing.JButton DrillWindow_ShowAnswer;
+    private javax.swing.JDialog EditWindow;
+    private java.awt.Label EditWindowAddWordLabel;
+    private javax.swing.JTable EditWindowTable;
+    private javax.swing.JButton EditWindow_Delete;
+    private javax.swing.JButton EditWindow_NewCard;
+    private javax.swing.JDialog EditWindow_NewCardWindow;
+    private javax.swing.JButton EditWindow_NewCardWindow_Add;
+    private javax.swing.JTextField EditWindow_NewCardWindow_TranslationField;
+    private javax.swing.JTextField EditWindow_NewCardWindow_WordField;
     private javax.swing.JFileChooser FileChooser;
-    private javax.swing.JButton NewDeckFieldCancel;
-    private javax.swing.JButton NewDeckFieldOkButton;
-    private javax.swing.JTextField NewDeckNameField;
-    private javax.swing.JTextField NewTranslationField;
-    private javax.swing.JButton NewWordAddButton;
-    private javax.swing.JButton NewWordDoneButton;
-    private javax.swing.JTextField NewWordField;
+    private javax.swing.JDialog NewCardWindow;
+    private javax.swing.JButton NewCardWindow_Add;
+    private javax.swing.JButton NewCardWindow_Done;
+    private javax.swing.JTextField NewCardWindow_TranslationField;
+    private javax.swing.JTextField NewCardWindow_WordField;
+    private javax.swing.JDialog NewDeckWindow;
+    private javax.swing.JButton NewDeckWindow_Cancel;
+    private javax.swing.JTextField NewDeckWindow_NameField;
+    private javax.swing.JButton NewDeckWindow_OK;
     private javax.swing.JScrollPane ScrollPane;
-    private javax.swing.JLabel StatsShowInformation;
-    private javax.swing.JLabel StatsShowInformation2;
     private javax.swing.JDialog StatsWindow;
-    private javax.swing.JButton UiCloseButton;
-    private javax.swing.JButton UiDeleteButton;
-    private javax.swing.JButton UiEditButton;
-    private javax.swing.JButton UiNewDeckButton;
-    private javax.swing.JButton UiOpenFileButton;
-    private javax.swing.JButton UiStartDrillingButton;
-    private javax.swing.JMenuBar UiTopMenu;
-    private javax.swing.JMenu UiTopMenuEdit;
-    private javax.swing.JMenu UiTopMenuFile;
-    private javax.swing.JButton UiUpdateListButton;
+    private javax.swing.JLabel StatsWindow_InfoLabel1;
+    private javax.swing.JLabel StatsWindow_InfoLabel2;
+    private javax.swing.JButton UIWindow_Browse;
+    private javax.swing.JButton UIWindow_Delete;
+    private javax.swing.JButton UIWindow_Edit;
+    private javax.swing.JButton UIWindow_NewDeck;
+    private javax.swing.JButton UIWindow_Quit;
+    private javax.swing.JButton UIWindow_Start;
+    private javax.swing.JButton UIWindow_UpdateList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JList jList;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar3;
-    public static javax.swing.JMenu jMenuEdit;
-    public static javax.swing.JMenu jMenuFile;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private java.awt.Label label3;
+    private java.awt.Label label4;
     // End of variables declaration//GEN-END:variables
 
     private void allCardsGonethroughCheck() {
@@ -766,20 +972,33 @@ public class UI extends javax.swing.JFrame implements Runnable {
             DrillWindow.setVisible(false);
             StatsWindow.pack();
             StatsWindow.setVisible(true);
-            StatsShowInformation.setText(stats.getTotalCorrectStats());
-            StatsShowInformation2.setText(stats.getTotalIncorrectStats());
+            StatsWindow_InfoLabel1.setText(stats.getTotalCorrectStats());
+            StatsWindow_InfoLabel2.setText(stats.getTotalIncorrectStats());
             wordIndex = 0;
             stats.reset();
 
         } else {
            
-            DrillShowAnswerLabel.setText("");
-            DrillShowAnswerButton.setVisible(true);
+            DrillWindow_AnswerLabel.setText("");
+            DrillWindow_ShowAnswer.setVisible(true);
             DrillShowWordLabel.setText(words.get(wordIndex));
 
-            DrillEvaluateCorrectButton.setVisible(false);
-            DrillEvaluateIncorrectButton.setVisible(false);
+            DrillWindow_Correct.setVisible(false);
+            DrillWindow_Incorrect.setVisible(false);
         }
     }
 
+    private void getTableContent() {
+        try {
+        ArrayList<Cards> list = handler.loadWords(jList.getSelectedValue().toString());
+        DefaultTableModel model = new DefaultTableModel();
+        EditWindowTable.setModel(model);
+        model.setColumnIdentifiers(new String[] {"Word", "Translation"});
+        for (Cards cards : list) {
+            model.addRow(new String[] {cards.getWord(), cards.getTranslation()});
+        }
+        } catch (Exception e) {
+            System.out.println("UiEditButtonAction = ERROR");
+        }
+    }
 }

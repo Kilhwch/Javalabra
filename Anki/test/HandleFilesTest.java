@@ -61,13 +61,13 @@ public class HandleFilesTest {
 //        ArrayList<String> list = new ArrayList<String>();
 //    }
     
-    @Test
-    public void writeToFileToimii() throws FileNotFoundException {
-        test.createFile("writeToFile");
-        test.writeToFile("eka", "toka");
-        Scanner reader = new Scanner(new File("./Tiedostot/writeToFile.txt"));
-        while (reader.hasNext()) {
-            
-        }
-    }
+//    @Test
+//    public void writeToFileToimii() throws FileNotFoundException {
+//        test.createFile("writeToFile");
+//        test.writeToFile("eka", "toka");
+//        Scanner reader = new Scanner(new File("./Tiedostot/writeToFile.txt"));
+//        while (reader.hasNext()) {
+//            
+//        }
+//    }
 }

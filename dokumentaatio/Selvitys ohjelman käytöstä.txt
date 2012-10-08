@@ -1,0 +1,17 @@
+Aihe: Anki -tyylinen opiskelu/sanaohjelma 
+
+Ohjelman tarkoitus: 
+
+Opiskeluun tarkoitettu ohjelma jonka avulla k‰ytt‰j‰ luo omia korttipakkoja,
+jotka sis‰lt‰v‰t kortteja muodossa sana-k‰‰nnˆs. Ohjelma n‰ytt‰‰ sanan ja opiskelija
+arvaa mieless‰‰n sanan. Opiskelija katsoo vastauksen ja arvioi omaa suoritustaan.
+Kortteja k‰yd‰‰n l‰pi niin kauan kuin pakassa on kortteja. 
+Lopuksi k‰ytt‰j‰ saa tiedon k‰ytyjen sanojen lukum‰‰r‰st‰ ja ilmoituksen oikeista ja 
+v‰‰rist‰ vastauksista prosentteina.
+
+Lyhyesti mit‰ ohjelmalla voi tehd‰:
+
+Ankilla voi Luoda, Poistaa, Editoida ja tietysti k‰yd‰ l‰pi pakkoja. Omia pakkoja
+voi myˆs tehd‰ tekstitiedoon (muodossa sana <enter> k‰‰nnˆs) ja avata ne ohjelman Browse -napilla.
+
+Tietty‰ k‰ytt‰j‰‰ ei ole, mutta k‰ytt‰j‰n lis‰‰m‰t pakat tallennetaan tekstitiedostoon.

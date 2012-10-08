@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -13,13 +12,13 @@ import java.util.Scanner;
  */
 public class HandleFiles {
 
-    private HashMap<String, File> fileList;
+
     private String fileName;
     private File file;
 
-    public HandleFiles(File fileName, String name) {
-        this.fileList = new HashMap<String, File>();
-        this.file = fileName;
+    public HandleFiles(File file, String name) {
+        //        this.fileList = new HashMap<String, File>();
+        this.file = file;
         this.fileName = name;
     }
 
@@ -39,20 +38,7 @@ public class HandleFiles {
     public void setFileName(String name) {
         this.fileName = name;
     }
-
-    /**
-     * Lisää tiedoston listaan.
-     */
-    public void addFileToFileList() {
-        this.fileList.put(fileName, file);
-    }
-
-    /**
-     * Lisää tiedoston listaan hakemistosta.
-     */
-    public void addOpenedFileToFileList(String name, File file) {
-        this.fileList.put(name, file);
-    }
+    
 
     /**
      * Lisää uuden tiedoston listaan.
@@ -82,7 +68,6 @@ public class HandleFiles {
             addFile(name);
             try {
                 PrintWriter writer = new PrintWriter(this.file);
-                addFileToFileList();
                 writer.close();
 
             } catch (Exception e) {
@@ -106,11 +91,27 @@ public class HandleFiles {
             }
             writer.close();
             File textfile = new File("./Tiedostot/" + name + ".txt");
-            textfile.setWritable(true);
             textfile.delete();
         } catch (Exception e) {
             System.out.println("deleteFileFromTextFile = ERROR");
         }
+    }
+    
+     /**
+     * Poistaa sanan ja käännöksen annetulla tiedoston nimellä.
+     */
+    public void deleteWord(String file, String word, String translation) throws FileNotFoundException {
+        ArrayList<String> list = getExistingWords(file);
+        PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + file + ".txt"));
+        
+        for (int i = 0; i < list.size(); i++) {
+            if (!list.get(i).equals(word)) {
+                if (!list.get(i).equals(translation)) {
+                    writer.println(list.get(i));
+                    }
+                }
+        }
+        writer.close();
     }
 
     /**
@@ -158,6 +159,22 @@ public class HandleFiles {
         reader.close();
         return list;
     }
+    
+     /**
+     * Hakee kaikkien olemassa olevat sanat tiedostosta.
+     * 
+     * @return ArrayList<String>
+     */
+    public ArrayList<String> getExistingWords(String name) throws FileNotFoundException {
+        ArrayList<String> list = new ArrayList<String>();
+        Scanner reader = new Scanner(new File("./Tiedostot/"+name+".txt"));
+        
+        while (reader.hasNext()) {
+            list.add(reader.next());
+        }
+        reader.close();
+        return list;
+    }
 
     /**
      * Lataa halutun tiedoston annetulla nimellä.
@@ -176,18 +193,36 @@ public class HandleFiles {
     }
 
     /**
+     * Lataa halutun tiedoston sanat annetulla nimellä.
+     * 
+     * @return ArrayList<Cards>
+     */
+    
+    public ArrayList<Cards> loadWords(String name) throws FileNotFoundException {
+        ArrayList<Cards> list = new ArrayList<Cards>();
+        Scanner reader = new Scanner(new File("./Tiedostot/" + name + ".txt"));
+
+        while (reader.hasNext()) {
+            Cards card = new Cards(reader.nextLine(), reader.nextLine());
+            list.add(card);
+        }
+        reader.close();
+        return list;
+    }
+    
+    /**
      * Kirjoittaa annetun sanan ja käännöksen tiedostoon vanhan sisällön
      * lisäksi jos löytyy.
      */
-    public void writeToFile(String word, String translation) throws FileNotFoundException {
-        if (fileIsEmpty(this.fileName + ".txt") == false) {
+    public void writeToFile(String name, String word, String translation) throws FileNotFoundException {
+        if (fileIsEmpty(name + ".txt") == false) {
             ArrayList<String> temp = new ArrayList<String>();
-            Scanner reader = new Scanner(new File("./Tiedostot/" + this.fileName + ".txt"));
+            Scanner reader = new Scanner(new File("./Tiedostot/" + name + ".txt"));
             while (reader.hasNext()) {
                 String text = reader.nextLine();
                 temp.add(text);
             }
-            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName + ".txt"));
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + name + ".txt"));
             for (int i = 0; i < temp.size(); i++) {
                 writer.println(temp.get(i));
             }
@@ -196,7 +231,7 @@ public class HandleFiles {
             writer.close();
             reader.close();
         } else {
-            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + this.fileName + ".txt"));
+            PrintWriter writer = new PrintWriter(new File("./Tiedostot/" + name + ".txt"));
             writer.println(word);
             writer.println(translation);
             writer.close();
