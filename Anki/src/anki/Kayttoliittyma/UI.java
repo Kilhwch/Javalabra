@@ -86,6 +86,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
         EditWindow = new javax.swing.JDialog();
         EditWindow_NewCard = new javax.swing.JButton();
         EditWindow_Delete = new javax.swing.JButton();
+        EditWindow_Done = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
@@ -336,16 +337,16 @@ public class UI extends javax.swing.JFrame implements Runnable {
                 .addContainerGap(91, Short.MAX_VALUE))
         );
 
-        StatsWindow.setTitle("Stats");
+        StatsWindow.setTitle("");
         StatsWindow.setAlwaysOnTop(true);
         StatsWindow.setMinimumSize(new java.awt.Dimension(250, 250));
         StatsWindow.setResizable(false);
 
-        StatsWindow_InfoLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        StatsWindow_InfoLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
 
-        StatsWindow_InfoLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        StatsWindow_InfoLabel2.setFont(new java.awt.Font("Tahoma", 0, 14));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel5.setText("Results:");
 
         javax.swing.GroupLayout StatsWindowLayout = new javax.swing.GroupLayout(StatsWindow.getContentPane());
@@ -379,7 +380,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
         );
 
         EditWindow.setAlwaysOnTop(true);
-        EditWindow.setMinimumSize(new java.awt.Dimension(450, 480));
+        EditWindow.setMinimumSize(new java.awt.Dimension(450, 570));
         EditWindow.setResizable(false);
 
         EditWindow_NewCard.setText("New Card");
@@ -393,6 +394,13 @@ public class UI extends javax.swing.JFrame implements Runnable {
         EditWindow_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 EditWindow_DeleteActionPerformed(evt);
+            }
+        });
+
+        EditWindow_Done.setText("Done");
+        EditWindow_Done.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditWindow_DoneActionPerformed(evt);
             }
         });
 
@@ -445,15 +453,16 @@ public class UI extends javax.swing.JFrame implements Runnable {
             EditWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EditWindowLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(EditWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                    .addGroup(EditWindowLayout.createSequentialGroup()
+                .addGroup(EditWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(EditWindow_Done, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                    .addComponent(jLabel6)
+                    .addComponent(jSeparator6, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditWindowLayout.createSequentialGroup()
                         .addComponent(EditWindow_NewCard, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(EditWindow_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                    .addComponent(jSeparator8, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE))
                 .addGap(14, 14, 14))
         );
         EditWindowLayout.setVerticalGroup(
@@ -469,9 +478,11 @@ public class UI extends javax.swing.JFrame implements Runnable {
                 .addGroup(EditWindowLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EditWindow_NewCard, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EditWindow_Delete, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
+                .addGap(13, 13, 13)
+                .addComponent(EditWindow_Done, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62))
+                .addGap(19, 19, 19))
         );
 
         EditWindow_NewCardWindow.setAlwaysOnTop(true);
@@ -486,7 +497,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
         });
 
         EditWindowAddWordLabel.setAlignment(java.awt.Label.CENTER);
-        EditWindowAddWordLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        EditWindowAddWordLabel.setFont(new java.awt.Font("Dialog", 1, 18));
         EditWindowAddWordLabel.setText("New Card");
 
         label3.setAlignment(java.awt.Label.CENTER);
@@ -608,7 +619,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
         jList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         ScrollPane.setViewportView(jList);
 
-        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18));
         jLabel4.setText("Decks");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -729,7 +740,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
             DrillWindow_Incorrect.setVisible(false);
             String selected = jList.getSelectedValue().toString();
             try {
-            words = handler.loadFile(selected);
+            words = handler.getWords(selected);
             } catch (Exception e) {
                 System.out.println("UiStartDrillingButton = ERROR");
             }
@@ -782,7 +793,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
 
     private void UIWindow_UpdateListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_UpdateListActionPerformed
         try {
-            jList.setListData(handler.getExistingFiles().toArray());
+            jList.setListData(handler.getWords("Tiedostolista").toArray());
         } catch (Exception e) {
             System.out.println("UiUpdateListButtonActionPerformed = ERROR");
         }
@@ -800,7 +811,12 @@ public class UI extends javax.swing.JFrame implements Runnable {
     private void NewDeckWindow_OKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewDeckWindow_OKActionPerformed
         deck.setDeckName(NewDeckWindow_NameField.getText());
         if (!deck.getDeckName().isEmpty()) {
-            handler.createFile(NewDeckWindow_NameField.getText());
+            try { 
+                handler.createFile(NewDeckWindow_NameField.getText());
+            } catch (Exception e) {
+                System.out.println("error");
+            
+            }
             NewDeckWindow.setVisible(false);
             NewCardWindow.setLocationRelativeTo(this);
             NewCardWindow.setTitle("Create new cards - " + deck.getDeckName());
@@ -871,6 +887,10 @@ public class UI extends javax.swing.JFrame implements Runnable {
         stats.reset();
     }//GEN-LAST:event_DrillWindowWindowClosed
 
+    private void EditWindow_DoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditWindow_DoneActionPerformed
+        EditWindow.setVisible(false);
+    }//GEN-LAST:event_EditWindow_DoneActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -917,6 +937,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
     private java.awt.Label EditWindowAddWordLabel;
     private javax.swing.JTable EditWindowTable;
     private javax.swing.JButton EditWindow_Delete;
+    private javax.swing.JButton EditWindow_Done;
     private javax.swing.JButton EditWindow_NewCard;
     private javax.swing.JDialog EditWindow_NewCardWindow;
     private javax.swing.JButton EditWindow_NewCardWindow_Add;
@@ -972,6 +993,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
             DrillWindow.setVisible(false);
             StatsWindow.pack();
             StatsWindow.setVisible(true);
+            StatsWindow.setTitle("Stats - " + jList.getSelectedValue().toString());
             StatsWindow_InfoLabel1.setText(stats.getTotalCorrectStats());
             StatsWindow_InfoLabel2.setText(stats.getTotalIncorrectStats());
             wordIndex = 0;
@@ -990,13 +1012,14 @@ public class UI extends javax.swing.JFrame implements Runnable {
 
     private void getTableContent() {
         try {
-        ArrayList<Cards> list = handler.loadWords(jList.getSelectedValue().toString());
+        ArrayList<String> list = handler.getWords(jList.getSelectedValue().toString());
         DefaultTableModel model = new DefaultTableModel();
         EditWindowTable.setModel(model);
         model.setColumnIdentifiers(new String[] {"Word", "Translation"});
-        for (Cards cards : list) {
-            model.addRow(new String[] {cards.getWord(), cards.getTranslation()});
-        }
+            for (int i = 0; i < list.size(); i++) {
+                model.addRow(new String[] { list.get(i), list.get(i+1) });
+                i++;
+            }
         } catch (Exception e) {
             System.out.println("UiEditButtonAction = ERROR");
         }
