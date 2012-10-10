@@ -1,34 +1,41 @@
-﻿Tehdyt testit lyhyesti (läpi)
-________________________________________________________________________
+﻿Testikattavuus
 
-1.0 Nappulat (Delete, Start, Edit etc) deaktivoituvat jos valittu deck on null.
-1.1 Nappuloilla tai tyhjillä kentillä ylipäätänsä ei pitäisi saada aikaan virhetilanteita.
-1.2 Sanat tallentuvat tiedostoon.
-1.3 Delete poistaa deckit oikein ohjelmasta kuin myös itse tiedoston.
-1.4 Editin kautta voi lisätä ja poistaa kortteja. 
-1.5 Browse -napilla voi avata itsetehtyjä tiedostoja jos tiedoston rakenne on: sana <enter> käännös.
-1.6 Koska ohjelma tallentaa pakat tiedostoon Tiedostolista.txt, ohjelman voi myös sulkea menettämättä
-vanhoja pakkoja. Tiedostolista luodaan heti aluksi jos sitä ei ole olemassa.
-1.7 Statsit näytetään kun pakka on käyty läpi.
 
-________________________________________________________________________
+Tehdyt testit lyhyesti (läpi)
+________________________________________________________________________________
+										|
+1.0 Nappulat (Delete, Start, Edit etc) deaktivoituvat jos valinta tyhjä		|
+1.1 Nappuloilla tai tyhjillä kentillä ei pitäisi saada aikaan virhettä		|
+1.2 Sanat tallentuvat tiedostoon.						|
+1.3 Delete poistaa deckit oikein ohjelmasta kuin myös itse tiedoston.		|
+1.4 Editin kautta voi lisätä ja poistaa kortteja. (katso bugikohta)		|
+1.5 Browse -napilla voi avata itsetehtyjä tiedostoja.				|
+1.6 Tiedostolista.txt tallentaa kaikki pakat oikein.				|
+1.7 Statsit näytetään kun pakka on käyty kokonaan läpi.				|
+										|
+________________________________________________________________________________|
+										|
+Tehdyt testit (bugit)								|
+										|
+2.1 Editoidessa pakan poisto onnistuu oletetusti vain jos 			|
+käyttäjä aktivoi sanakentän. Vaikka käännös on samalla rivillä, 		|
+käännöksen ollessa aktivoituna delete -nappi ei toimi vaan poistaa vain 	|		
+toisen arvon. (ks kohta 1.4)							|
+										|
+2.2 Muut mahdolliset bugit pääasiassa liittyvät käyttöliittymään. 		|
+Ohjelma ei lukitse viimeisintä ikkunaa vaan antaa käyttäjän vapaasti 		|
+käyttää kaikkia. Näin ollen esimerkiksi pakkaa editoidessa pakka voidaan 	|
+samaan aikaan poistaa.								|
+										|
+________________________________________________________________________________|
+										|
+Miten testattu?									|
+										|
+Koska ohjelma oikeastaan perustuu pitkälti tiedostojen "hallinnointiin",	|
+kaikki napit on myös testattu niin että ohjelma on bootattu, jolloin		|
+varmistetaan että metodit toimivat oikein ja muuttujat pysyvät 			|
+oikeina/nollautuu.								|
+										|
+________________________________________________________________________________|
+										
 
-Tehdyt testit (bugit)
-
-2.1 Editoidessa pakan poisto onnistuu oletetusti vain jos käyttäjä aktivoi
-sanakentän. Vaikka käännös on samalla rivillä, käännöksen ollessa aktivoituna
-delete -nappi ei toimi vaan poistaa vain toisen arvon. (ks kohta 1.4)
-
-2.2 Tyhjän pakan voi tehdä ja sitä voi myös käydä läpi "virheellisesti"
-
-2.3 Muut mahdolliset bugit pääasiassa liittyvät käyttöliittymään. Ohjelma ei lukitse
-viimeisintä ikkunaa vaan antaa käyttäjän vapaasti käyttää kaikkia. Näin ollen esimerkiksi
-pakkaa editoidessa pakka voidaan samaan aikaan poistaa.
-
-________________________________________________________________________
-
-Miten testattu?
-
-Koska ohjelma oikeastaan perustuu pitkälti tiedostojen "hallinnointiin",
-kaikki napit on myös testattu niin että ohjelma on bootattu, jolloin
-varmistetaan että metodit toimivat oikein ja muuttujat pysyvät oikeina/nollautuu.

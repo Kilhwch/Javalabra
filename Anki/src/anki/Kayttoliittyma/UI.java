@@ -13,6 +13,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 public class UI extends javax.swing.JFrame implements Runnable {
@@ -379,6 +380,10 @@ public class UI extends javax.swing.JFrame implements Runnable {
                 .addContainerGap(62, Short.MAX_VALUE))
         );
 
+        FileChooser.setAcceptAllFileFilterUsed(false);
+        FileChooser.setCurrentDirectory(new java.io.File("C:\\Users\\Kasper\\Javalabra\\Anki\\Tiedostot"));
+        FileChooser.setForeground(java.awt.Color.white);
+
         EditWindow.setAlwaysOnTop(true);
         EditWindow.setMinimumSize(new java.awt.Dimension(450, 570));
         EditWindow.setResizable(false);
@@ -728,7 +733,7 @@ public class UI extends javax.swing.JFrame implements Runnable {
 
     private void UIWindow_StartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_StartActionPerformed
         if (jList.getSelectedValue() != null) {
-        
+            if (handler.fileIsEmpty(jList.getSelectedValue().toString()) == false) {
             wordIndex = 0;
             DrillWindow_AnswerLabel.setVisible(false);
             DrillWindow_ShowAnswer.setVisible(true);
@@ -745,6 +750,9 @@ public class UI extends javax.swing.JFrame implements Runnable {
                 System.out.println("UiStartDrillingButton = ERROR");
             }
             DrillShowWordLabel.setText(words.get(wordIndex));
+            }
+            else
+                JOptionPane.showMessageDialog(this, "File is empty!", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_UIWindow_StartActionPerformed
 
@@ -771,17 +779,18 @@ public class UI extends javax.swing.JFrame implements Runnable {
 
     private void UIWindow_BrowseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_BrowseActionPerformed
         JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(".txt files", "txt");
+        chooser.setFileFilter(filter);
         chooser.showOpenDialog(null);
         File openedfile = chooser.getSelectedFile();
-        try {
-        String openedfilename = openedfile.getName();
-        String newname = openedfilename.replace(".txt", "");
-        System.out.println(newname);
-        handler.addFile(newname);
-        UIWindow_UpdateList.doClick();
-        } catch (Exception e) {
-            System.out.println("UI OPEN ERROR");
-        }
+            try {
+            String openedfilename = openedfile.getName();
+            String newname = openedfilename.replace(".txt", "");
+            handler.addFile(newname);
+            UIWindow_UpdateList.doClick();
+            } catch (Exception e) {
+                System.out.println("UI OPEN ERROR");
+            }
     }//GEN-LAST:event_UIWindow_BrowseActionPerformed
 
     private void UIWindow_NewDeckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UIWindow_NewDeckActionPerformed

@@ -56,6 +56,7 @@ public class HandleFiles {
         addFile(name);
 
     }
+    
 
     /**
      * Poistaa tiedoston annetulla nimellä.

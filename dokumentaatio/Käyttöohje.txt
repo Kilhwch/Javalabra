@@ -1,0 +1,33 @@
+Käyttöohje
+
+________________________________________________________________________________
+										|
+Pakan läpikäyminen (Start)							|
+										|
+Kun avaat ohjelman, valkoinen kenttä näyttää kaikki olemassaolevat pakat. 	|
+Klikkaa pakkaa jonka haluat käydä läpi ja paina Start.				|
+										|
+										|
+										|
+Pakan luominen (Dew deck)							|
+________________________________________________________________________________|
+										|
+Voit luoda pakan painamalla "New Deck" nappia.					|
+										|
+										|
+										|
+Itse tehdyn pakan avaaminen (Browse)						|
+________________________________________________________________________________|
+										|
+Itse tehtyjä / kirjoitettuja tekstitiedostoja voi myös avata Browse- napilla ja	|
+ne tallennetaan pakkana ohjelmaan. Kerran avattuasi pakan sitä ei tarvitse	|
+avata enää uudestaan.								|
+										|
+										|
+										|
+Pakan editoiminen (Edit)							|
+________________________________________________________________________________|
+										|
+Valitse editoitava pakka ja klikkaa edit- nappia. Saat näkyviin pakan sisällön	|
+jota voit muokata poistamalla tai lisäämällä kortteja.				|
+________________________________________________________________________________|
